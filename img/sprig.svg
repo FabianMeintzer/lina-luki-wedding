@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <!-- Dunkel bedrucktes Blattwerk – zweiter Grundbaustein -->
+  <g stroke-linecap="round">
+    <path d="M60 114V16" fill="none" stroke="#241109" stroke-width="3.4"/>
+    <path d="M60 98C42 96 28 86 24 72c20 0 34 8 36 26Z" fill="#20130b" stroke="#3a2416" stroke-width="1.2"/>
+    <path d="M60 80c18-2 32-12 36-26-20 0-34 8-36 26Z" fill="#26170d" stroke="#412a1a" stroke-width="1.2"/>
+    <path d="M60 62C44 60 32 51 28 39c18 0 30 7 32 23Z" fill="#1b1009" stroke="#331f13" stroke-width="1.2"/>
+    <path d="M60 44c16-2 28-11 32-23-17 0-29 7-32 23Z" fill="#22140b" stroke="#3a2416" stroke-width="1.2"/>
+    <path d="M60 26C50 24 42 18 40 10c13 1 20 6 20 16Z" fill="#1b1009" stroke="#331f13" stroke-width="1.1"/>
+    <g fill="none" stroke="#4b3220" stroke-width=".9" opacity=".85">
+      <path d="M58 96C46 91 36 84 28 74"/>
+      <path d="M62 78c12-5 22-12 30-22"/>
+      <path d="M58 60C48 56 39 50 32 41"/>
+      <path d="M62 42c10-4 18-10 25-18"/>
+    </g>
+    <circle cx="38" cy="24" r="2.2" fill="#5b3c26"/>
+    <circle cx="86" cy="18" r="1.8" fill="#5b3c26"/>
+  </g>
+</svg>

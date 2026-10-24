@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200" preserveAspectRatio="xMidYMin slice">
+  <!--
+    Floralischer Hero-Hintergrund. Alle Formen liegen direkt in dieser Datei:
+    Chrome lädt keine grafischen <use>-Verweise aus anderen Dateien, wenn eine
+    SVG als CSS-Hintergrundbild eingebunden wird.
+    Rosen: rose.svg · Blattwerk: sprig.svg  (gleiche Formen, hier eigenständig)
+  -->
+  <defs>
+    <linearGradient id="base" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#330916"/>
+      <stop offset=".5" stop-color="#43101d"/>
+      <stop offset="1" stop-color="#210509"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="34%" r="52%">
+      <stop offset="0" stop-color="#6f1828" stop-opacity=".92"/>
+      <stop offset="1" stop-color="#330916" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="rg" cx="46%" cy="38%" r="66%">
+      <stop offset="0" stop-color="#7f1e30"/>
+      <stop offset=".52" stop-color="#571120"/>
+      <stop offset="1" stop-color="#2c0610"/>
+    </radialGradient>
+    <linearGradient id="topFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1d040a" stop-opacity=".72"/>
+      <stop offset="1" stop-color="#1d040a" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Rose, Ursprung 0..120 -->
+    <g id="rose">
+      <g transform="rotate(8 60 62)">
+        <ellipse cx="60" cy="68" rx="50" ry="44" fill="url(#rg)"/>
+      </g>
+      <path d="M13 70c-4-20 9-38 26-43 12-3 21 5 18 16-3 12-12 18-22 22s-20 6-22 5Z" fill="#6c1727"/>
+      <path d="M107 66c4-20-9-37-26-42-12-3-21 5-18 16 3 12 12 18 22 22s20 5 22 4Z" fill="#5d1322"/>
+      <path d="M60 22c17 0 30 12 29 27-1 13-13 20-29 20S32 61 31 48C30 34 43 22 60 22Z" fill="#78202f"/>
+      <path d="M16 78c6 17 22 27 40 27l-3-21c-11 0-21-4-26-12-6-8-9-2-11 6Z" fill="#4b0f1c"/>
+      <path d="M104 76c-6 17-22 28-40 28l3-21c11 0 21-5 26-13 6-8 9-1 11 6Z" fill="#3d0b16"/>
+      <path d="M60 104c-14 0-26-7-32-17 8 5 20 7 32 7s24-2 32-7c-6 10-18 17-32 17Z" fill="#2b0610"/>
+      <g fill="none" stroke-linecap="round">
+        <path d="M60 44c11 0 19 8 19 18s-9 17-19 17-17-7-17-15 7-14 15-14 12 5 12 11-4 9-9 9-8-3-8-7 3-6 7-6" stroke="#95374a" stroke-width="2" opacity=".32"/>
+        <path d="M60 52c6 0 11 4 11 10s-5 10-11 10-9-4-9-8 4-8 8-8" stroke="#390a14" stroke-width="3" opacity=".55"/>
+        <path d="M41 62c-3-12 3-24 14-29" stroke="#7d2233" stroke-width="1.8" opacity=".3"/>
+        <path d="M79 62c3-12-3-23-14-28" stroke="#24050c" stroke-width="2" opacity=".55"/>
+      </g>
+      <ellipse cx="46" cy="42" rx="14" ry="8" fill="#b4707c" opacity=".1" transform="rotate(-24 46 42)"/>
+    </g>
+
+    <!-- Blattwerk, Ursprung 0..120 -->
+    <g id="sprig">
+      <path d="M60 114V14" fill="none" stroke="#2c1a0e" stroke-width="3.6" stroke-linecap="round"/>
+      <path d="M60 98C42 96 28 86 24 72c20 0 34 8 36 26Z" fill="#2b1a0f" stroke="#4d3320" stroke-width="1.3"/>
+      <path d="M60 80c18-2 32-12 36-26-20 0-34 8-36 26Z" fill="#331f12" stroke="#553a24" stroke-width="1.3"/>
+      <path d="M60 62C44 60 32 51 28 39c18 0 30 7 32 23Z" fill="#251609" stroke="#432c1b" stroke-width="1.3"/>
+      <path d="M60 44c16-2 28-11 32-23-17 0-29 7-32 23Z" fill="#2d1b0e" stroke="#4d3320" stroke-width="1.3"/>
+      <path d="M60 26C50 24 42 18 40 10c13 1 20 6 20 16Z" fill="#251609" stroke="#432c1b" stroke-width="1.2"/>
+      <g fill="none" stroke="#68492c" stroke-width=".9" opacity=".9">
+        <path d="M58 96C46 91 36 84 28 74"/>
+        <path d="M62 78c12-5 22-12 30-22"/>
+        <path d="M58 60C48 56 39 50 32 41"/>
+        <path d="M62 42c10-4 18-10 25-18"/>
+      </g>
+      <circle cx="38" cy="24" r="2.4" fill="#7a5533"/>
+      <circle cx="86" cy="18" r="2" fill="#7a5533"/>
+    </g>
+
+    <!-- Cluster: Rosen mit Blattwerk, Rose in Clustermitte (0,0) -->
+    <g id="cl-a">
+      <use href="#sprig" transform="translate(-72 -52) rotate(-28) scale(1.5) translate(-60 -60)"/>
+      <use href="#sprig" transform="translate(80 -34) rotate(40) scale(1.35) translate(-60 -60)"/>
+      <use href="#sprig" transform="translate(-36 88) rotate(198) scale(1.4) translate(-60 -60)"/>
+      <use href="#sprig" transform="translate(88 70) rotate(128) scale(1.2) translate(-60 -60)"/>
+      <use href="#rose" transform="translate(0 0) scale(1.75) translate(-60 -60)"/>
+    </g>
+    <g id="cl-b">
+      <use href="#sprig" transform="translate(58 -60) rotate(30) scale(1.3) translate(-60 -60)"/>
+      <use href="#sprig" transform="translate(-60 50) rotate(204) scale(1.2) translate(-60 -60)"/>
+      <use href="#sprig" transform="translate(-64 -54) rotate(-40) scale(1.05) translate(-60 -60)"/>
+      <use href="#rose" transform="translate(0 0) scale(1.35) translate(-60 -60)"/>
+    </g>
+    <g id="cl-c">
+      <use href="#sprig" transform="translate(-40 -34) rotate(-46) scale(.95) translate(-60 -60)"/>
+      <use href="#sprig" transform="translate(44 40) rotate(140) scale(.85) translate(-60 -60)"/>
+      <use href="#rose" transform="translate(0 0) scale(.95) translate(-60 -60)"/>
+    </g>
+    <g id="cl-d">
+      <use href="#sprig" transform="translate(2 40) rotate(178) scale(.8) translate(-60 -60)"/>
+      <use href="#rose" transform="translate(0 0) scale(.62) translate(-60 -60)"/>
+    </g>
+  </defs>
+
+  <rect width="1200" height="1200" fill="url(#base)"/>
+  <rect width="1200" height="1200" fill="url(#glow)"/>
+
+  <g>
+    <!-- obere Bandecken -->
+    <use href="#cl-a" transform="translate(76 86) scale(1.25)"/>
+    <use href="#cl-b" transform="translate(300 26) scale(.95)"/>
+    <use href="#cl-d" transform="translate(470 66) scale(.8)"/>
+    <use href="#cl-c" transform="translate(196 268) scale(.9)"/>
+    <use href="#cl-d" transform="translate(36 300) scale(1)"/>
+
+    <use href="#cl-b" transform="translate(1130 96) scale(-1.3 1.3)"/>
+    <use href="#cl-a" transform="translate(912 22) scale(-1.05 1.05)"/>
+    <use href="#cl-d" transform="translate(742 70) scale(-.8 .8)"/>
+    <use href="#cl-c" transform="translate(1010 286) scale(-.95 .95)"/>
+    <use href="#cl-d" transform="translate(1176 320) scale(-1 1)"/>
+
+    <!-- seitliche Mitte (auf schmalen Bildschirmen am Rand sichtbar) -->
+    <use href="#cl-b" transform="translate(232 470) scale(.9)"/>
+    <use href="#cl-d" transform="translate(322 636) scale(.85)"/>
+    <use href="#cl-b" transform="translate(972 506) scale(-.95 .95)"/>
+    <use href="#cl-d" transform="translate(890 664) scale(-.8 .8)"/>
+
+    <!-- unterer Abschluss -->
+    <use href="#cl-a" transform="translate(96 880) scale(1.35)"/>
+    <use href="#cl-c" transform="translate(306 1006) scale(1.05)"/>
+    <use href="#cl-b" transform="translate(182 1128) scale(.9)"/>
+    <use href="#cl-d" transform="translate(452 1096) scale(.9)"/>
+    <use href="#cl-d" transform="translate(600 1160)"/>
+    <use href="#cl-c" transform="translate(742 1116) scale(-.9 .9)"/>
+    <use href="#cl-b" transform="translate(1046 1096) scale(-1.1 1.1)"/>
+    <use href="#cl-a" transform="translate(1116 902) scale(-1.2 1.2)"/>
+    <use href="#cl-d" transform="translate(906 1010) scale(-.85 .85)"/>
+  </g>
+
+  <!-- weicher Übergang unter die Navigation -->
+  <rect width="1200" height="230" fill="url(#topFade)"/>
+
+  <g fill="#dcbf8d" opacity=".22">
+    <circle cx="520" cy="330" r="3.4"/>
+    <circle cx="576" cy="256" r="2.2"/>
+    <circle cx="690" cy="286" r="2.6"/>
+    <circle cx="664" cy="366" r="1.8"/>
+    <circle cx="330" cy="780" r="2.4"/>
+    <circle cx="880" cy="812" r="2.8"/>
+    <circle cx="600" cy="470" r="2"/>
+  </g>
+</svg>

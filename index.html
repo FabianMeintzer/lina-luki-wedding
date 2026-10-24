@@ -3,557 +3,1350 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lina &amp; Luki – Wir heiraten</title>
-<meta name="description" content="Einladung zur Hochzeit von Celina (Lina) und Lukas (Luki). Bitte bis zum gewünschten Rückmeldetermin zu- oder absagen.">
-<meta property="og:title" content="Lina &amp; Luki – Wir heiraten">
-<meta property="og:description" content="Einladung zur Hochzeit von Celina und Lukas – Zu-/Absage und Wünsche auf einen Blick.">
+<title>Celina &amp; Lukas – Hochzeit am 30. September 2028</title>
+<meta name="description" content="Einladung zur Hochzeit von Celina und Lukas: Samstag, 30. September 2028, Bayern · Oberfranken · Landkreis Bayreuth. Bitte bis zum 30. September 2027 zu- oder absagen.">
+<meta property="og:title" content="Celina &amp; Lukas – Wir heiraten">
+<meta property="og:description" content="Samstag, 30. September 2028 · Bayern, Oberfranken, Landkreis Bayreuth. Rückmeldung bis 30. September 2027.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://lina-luki-wedding.de/">
-<meta property="og:image" content="img/hero.svg">
-<meta name="theme-color" content="#5d7c6a">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%235d7c6a'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='30' fill='%23faf7f0' text-anchor='middle'%3EL&amp;L%3C/text%3E%3C/svg%3E">
+<meta property="og:image" content="img/hero-bloom.svg">
+<meta name="theme-color" content="#3a0a16">
+<link rel="icon" type="image/svg+xml" href="img/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Italiana&amp;family=Jost:wght@300;400;500&amp;display=swap" rel="stylesheet">
 
 <!-- =============================================================
-     PLATZHALTER – alles, was du noch anpassen musst, steht hier:
-     1. Konfiguration unten im <script> bei const CONFIG (Datum, Ort, E-Mail, Karte)
-     2. Bilder: img/hero.svg, img/couple.svg, img/venue.svg, img/map.svg, img/gallery-1..3.svg
-        → durch eigene Fotos ersetzen (z. B. hero.jpg) und den src-Pfad im HTML ändern
-     3. Texte mit "PLATZHALTER" im HTML überschreiben
-     4. E-Mail-Versand: const CONFIG.endpoint (Backend) oder const CONFIG.email (mailto)
-     ============================================================= -->
+      HINWEISE FÜR DIE PFLEGE
+      1. Konfiguration unten im Skript bei "var CONFIG":
+         weddingDate (Countdown), email (Empfänger der Rückmeldungen),
+         endpoint (Backend für den Versand). email und endpoint sind
+         noch NICHT bestätigt – siehe README, Abschnitt "RSVP-Versand".
+      2. Noch offen: genaue Location, Adresse, Uhrzeit, Empfänger-E-Mail.
+         Diese Stellen sind im Text bewusst mit "folgt" formuliert.
+      3. Eigene Fotos später: als img/*.jpg ablegen und im Abschnitt
+         "Unsere Geschichte" (oder im Hero) einfügen.
+      4. Gestaltungsdateien: img/hero-bloom.svg (Hero), img/botanical.svg
+         (Randmotive), img/monogram.svg (Siegel), img/favicon.svg.
+      ============================================================= -->
 
 <style>
   :root{
-    --paper:#faf7f0; --paper-2:#f2ece1; --ink:#2b2a26; --muted:#6b6459;
-    --sage:#5d7c6a; --sage-dark:#3d5749; --clay:#b9744f; --line:#ded5c6;
-    --radius:14px; --maxw:1080px;
-    --serif:"Cormorant Garamond", Georgia, "Times New Roman", serif;
-    --sans:"Jost", system-ui, "Segoe UI", sans-serif;
+    --wine-950:#1d040a; --wine-900:#2a0710; --wine-800:#3a0a16;
+    --wine-700:#4a0e1b; --wine-600:#5c1424; --wine-500:#71192c;
+    --cream:#f7f0e5; --cream-2:#efe4d2; --cream-3:#fffdf7;
+    --ink:#33161b; --ink-soft:#6d4c48;
+    --gold:#c9a86a; --gold-light:#e3caa0; --gold-deep:#9d7a3f;
+    --line:#e2d6be; --line-gold:rgba(201,168,106,.32);
+    --err:#8c1c2b;
+    --maxw:1120px; --radius:6px;
+    --serif:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --script:'Italiana', 'Cormorant Garamond', Georgia, serif;
+    --sans:'Jost', system-ui, 'Segoe UI', sans-serif;
   }
-  *{box-sizing:border-box}
+  *,*::before,*::after{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased}
-  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.1;margin:0}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);
+       font-weight:300;font-size:clamp(1rem,.96rem + .18vw,1.06rem);line-height:1.7;
+       -webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.08;margin:0}
   p{margin:0 0 1rem}
-  a{color:var(--sage-dark)}
-  img{display:block;max-width:100%;height:auto}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
-  .eyebrow{font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:var(--clay);margin:0 0 .8rem}
+  ul{margin:0;padding:0;list-style:none}
+  a{color:var(--wine-700);text-underline-offset:3px;text-decoration-color:rgba(157,122,63,.55)}
+  a:hover{color:var(--wine-500)}
+  img,svg{display:block;max-width:100%;height:auto}
+  [hidden]{display:none !important}
+  :focus-visible{outline:2px solid var(--gold-deep);outline-offset:3px}
+  ::selection{background:var(--wine-700);color:var(--cream)}
+  .sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;
+           clip:rect(0 0 0 0);white-space:nowrap;border:0}
+  .skip{position:absolute;left:-9999px}
+  .skip:focus{left:14px;top:14px;z-index:80;background:var(--gold);color:var(--wine-900);
+              padding:10px 18px;border-radius:4px;text-decoration:none}
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 clamp(18px,4vw,32px)}
 
-  /* ---------- Navigation ---------- */
-  .nav{position:sticky;top:0;z-index:20;background:rgba(250,247,240,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-  .nav .wrap{display:flex;align-items:center;gap:14px;padding-top:10px;padding-bottom:10px}
-  .brand{font-family:var(--serif);font-size:1.25rem;letter-spacing:.06em;white-space:nowrap}
-  .navlinks{display:flex;gap:16px;overflow-x:auto;font-size:.85rem;letter-spacing:.06em;flex:1;-webkit-overflow-scrolling:touch}
-  .navlinks a{color:var(--muted);text-decoration:none;white-space:nowrap}
-  .navlinks a:hover{color:var(--sage-dark)}
-  .navcta{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--sage);padding:8px 14px;border-radius:999px;text-decoration:none}
-  .navcta:hover{background:var(--sage-dark)}
-
-  /* ---------- Hero ---------- */
-  .hero{position:relative;color:#fff;overflow:hidden;border-bottom:1px solid var(--line)}
-  .hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .hero .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(43,42,38,.35),rgba(43,42,38,.6))}
-  .hero .wrap{position:relative;padding-top:84px;padding-bottom:72px;text-align:center}
-  .hero h1{font-size:clamp(2.6rem,7vw,4.6rem);letter-spacing:.02em}
-  .hero h1 .amp{color:#f0c9a6;font-style:italic;padding:0 .2rem}
-  .nick{font-family:var(--serif);font-style:italic;font-size:clamp(1.1rem,2.6vw,1.5rem);opacity:.9;margin:.4rem 0 0}
-  .meta{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;margin-top:1.4rem;font-size:.95rem;letter-spacing:.08em}
-  .meta span{border:1px solid rgba(255,255,255,.45);border-radius:999px;padding:6px 16px}
-  .countdown{margin-top:1.6rem;font-family:var(--serif);font-size:1.1rem;letter-spacing:.05em}
-  .countdown b{font-weight:500;font-family:var(--sans);font-size:.9rem;letter-spacing:.14em}
-  .btn{display:inline-block;margin-top:1.6rem;background:#fff;color:var(--sage-dark);border-radius:999px;padding:12px 26px;letter-spacing:.12em;text-transform:uppercase;font-size:.82rem;text-decoration:none}
-  .btn:hover{background:var(--paper-2)}
-
-  /* ---------- Sections ---------- */
-  section{padding:64px 0;border-bottom:1px solid var(--line)}
-  section:last-of-type{border-bottom:0}
-  .sec-title{font-size:clamp(1.7rem,4vw,2.4rem);margin-bottom:.6rem}
-  .lead{color:var(--muted);max-width:60ch}
-  .grid{display:grid;gap:32px}
-  @media(min-width:760px){.grid.two{grid-template-columns:1fr 1fr;align-items:center}.grid.three{grid-template-columns:repeat(3,1fr)}}
-  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px}
-  .card h3{font-size:1.35rem;margin-bottom:.4rem}
-  .card .tag{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--clay)}
-  .photo{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:0 10px 30px rgba(43,42,38,.08)}
-  .gallery{display:grid;gap:16px;grid-template-columns:1fr}
-  @media(min-width:700px){.gallery{grid-template-columns:repeat(3,1fr)}}
-
-  /* ---------- Ablauf ---------- */
-  .timeline{list-style:none;margin:0;padding:0}
-  .timeline li{display:grid;grid-template-columns:86px 1fr;gap:16px;padding:16px 0;border-bottom:1px dashed var(--line)}
-  .timeline li:last-child{border-bottom:0}
-  .time{font-family:var(--serif);font-size:1.15rem;color:var(--sage-dark)}
-  .tl-title{font-weight:500;letter-spacing:.04em}
-  .tl-note{color:var(--muted);font-size:.92rem}
-
-  /* ---------- Info-Listen ---------- */
-  .kv{display:grid;grid-template-columns:130px 1fr;gap:8px 16px;font-size:.95rem}
-  .kv dt{color:var(--muted);letter-spacing:.06em}
-  .kv dd{margin:0}
-  .note{background:var(--paper-2);border-left:3px solid var(--sage);padding:16px 18px;border-radius:0 var(--radius) var(--radius) 0;font-size:.93rem;color:var(--muted)}
-
-  details{border-bottom:1px dashed var(--line);padding:14px 0}
-  details summary{cursor:pointer;font-weight:500;letter-spacing:.04em}
-  details p{margin-top:.6rem;color:var(--muted);font-size:.93rem}
-
-  /* ---------- Formular ---------- */
-  .form{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px}
-  .fgroup{border:0;margin:0 0 22px;padding:0 0 22px;border-bottom:1px dashed var(--line)}
-  .fgroup:last-of-type{border-bottom:0;padding-bottom:0}
-  .fgroup legend{font-family:var(--serif);font-size:1.3rem;padding-bottom:.5rem}
-  .hint{color:var(--muted);font-size:.85rem;margin:-.3rem 0 1rem}
-  .row{display:flex;flex-wrap:wrap;gap:10px}
-  .opt{position:relative;flex:1 1 150px}
-  .opt input{position:absolute;opacity:0;pointer-events:none}
-  .opt span{display:block;border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;font-size:.92rem;letter-spacing:.04em;background:var(--paper)}
-  .opt span:hover{border-color:var(--sage)}
-  .opt input:checked + span{background:var(--sage);color:#fff;border-color:var(--sage-dark)}
-  .opt input:focus-visible + span{outline:2px solid var(--clay);outline-offset:2px}
-  .chips{display:flex;flex-wrap:wrap;gap:10px}
-  .chip{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:9px 14px;font-size:.88rem;cursor:pointer;background:var(--paper)}
-  .chip input{accent-color:var(--sage)}
-  .chip input:checked{outline:none}
-  .field{display:block;margin-bottom:14px}
-  .field label{display:block;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
-  input[type=text],input[type=email],input[type=number],select,textarea{
-    width:100%;font:inherit;font-weight:400;color:var(--ink);background:var(--paper);
-    border:1px solid var(--line);border-radius:10px;padding:12px 14px
+  /* ---------------- Navigation ---------------- */
+  .nav{position:sticky;top:0;z-index:40;background:rgba(37,7,15,.94);
+       backdrop-filter:blur(10px);border-bottom:1px solid var(--line-gold)}
+  .nav-inner{display:flex;align-items:center;gap:18px;padding-top:12px;padding-bottom:12px;position:relative}
+  .brand{display:flex;align-items:center;gap:12px;color:var(--cream);text-decoration:none;
+         font-family:var(--serif);font-size:1.12rem;letter-spacing:.14em;text-transform:uppercase}
+  .brand span{white-space:nowrap}
+  .brand:hover{color:var(--gold-light)}
+  .brand-mark{width:30px;height:38px;flex:none}
+  .navlinks{display:none;position:absolute;top:100%;left:0;right:0;
+            flex-direction:column;gap:2px;background:var(--wine-900);border-bottom:1px solid var(--line-gold);padding:10px clamp(18px,4vw,32px) 18px}
+  .navlinks a{color:rgba(247,240,229,.86);text-decoration:none;font-size:.82rem;letter-spacing:.18em;
+              text-transform:uppercase;padding:11px 4px;border-bottom:1px solid rgba(201,168,106,.14)}
+  .navlinks a:last-child{border-bottom:0}
+  .navlinks a:hover,.navlinks a.active{color:var(--gold-light)}
+  .nav.open .navlinks{display:flex}
+  .navcta{border:1px solid var(--gold);border-radius:999px;color:var(--gold-light) !important;
+          text-align:center;padding:10px 18px !important;margin-top:8px}
+  .navcta:hover{background:var(--gold);color:var(--wine-900) !important}
+  .burger{margin-left:auto;display:inline-flex;align-items:center;gap:10px;background:none;border:1px solid var(--line-gold);
+          border-radius:999px;color:var(--cream);font:inherit;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+          padding:9px 16px;cursor:pointer}
+  .burger:hover{border-color:var(--gold);color:var(--gold-light)}
+  .burger .bars{display:block;width:16px;height:9px;position:relative}
+  .burger .bars::before,.burger .bars::after{content:'';position:absolute;left:0;right:0;height:1px;background:currentColor}
+  .burger .bars::before{top:0}.burger .bars::after{bottom:0}
+  @media(min-width:1024px){
+    .burger{display:none}
+    .navlinks{display:flex;position:static;flex-direction:row;flex:1;justify-content:flex-end;gap:clamp(14px,2vw,30px);
+              background:none;border:0;padding:0;margin:0}
+    .navlinks a{border:0;padding:4px 0;font-size:.74rem;letter-spacing:.16em;white-space:nowrap}
+    .navcta{margin-top:0;padding:8px 16px !important}
   }
-  textarea{min-height:110px;resize:vertical}
-  input:focus,select:focus,textarea:focus{outline:2px solid var(--sage);border-color:var(--sage)}
-  .duo{display:grid;gap:14px;grid-template-columns:1fr}
-  @media(min-width:600px){.duo{grid-template-columns:1fr 1fr}}
-  .hp{position:absolute;left:-9999px}
-  .consent{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;color:var(--muted)}
-  .consent input{accent-color:var(--sage);margin-top:4px}
-  .submit{margin-top:22px;width:100%;background:var(--sage);color:#fff;border:0;border-radius:999px;padding:14px 22px;font:inherit;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
-  .submit:hover{background:var(--sage-dark)}
-  .submit[disabled]{opacity:.6;cursor:default}
-  .err{color:#a3432a;font-size:.85rem;margin-top:10px;display:none}
-  .err.on{display:block}
-  .thanks{display:none;text-align:center;padding:34px 22px}
-  .thanks.on{display:block}
-  .thanks h3{font-size:1.8rem;margin-bottom:.5rem}
-  .thanks pre{background:var(--paper-2);border:1px solid var(--line);border-radius:10px;padding:14px;text-align:left;font-size:.82rem;overflow:auto;white-space:pre-wrap}
-  .ghost{background:none;border:1px solid var(--line);border-radius:999px;padding:10px 18px;font:inherit;letter-spacing:.1em;text-transform:uppercase;font-size:.78rem;cursor:pointer;color:var(--muted)}
 
-  /* ---------- Footer ---------- */
-  footer{padding:44px 0 56px;background:var(--paper-2)}
-  footer .wrap{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center;font-size:.85rem;color:var(--muted)}
-  .ornament{text-align:center;font-family:var(--serif);font-size:1.4rem;color:var(--clay);letter-spacing:.3em}
+  /* ---------------- Hero ---------------- */
+  .hero{position:relative;color:#fbf3e7;text-align:center;overflow:hidden;
+        background:var(--wine-900) url("img/hero-bloom.svg") center top/cover no-repeat;
+        border-bottom:1px solid var(--line-gold)}
+  .hero .veil{position:absolute;inset:0;background:
+        radial-gradient(ellipse 54% 44% at 50% 46%,rgba(21,3,8,.8),rgba(21,3,8,.42) 56%,rgba(21,3,8,0) 78%),
+        linear-gradient(180deg,rgba(29,4,10,.4),rgba(29,4,10,.2) 40%,rgba(29,4,10,.66))}
+  .hero .wrap{position:relative;padding-top:clamp(64px,11vw,120px);padding-bottom:clamp(60px,10vw,110px)}
+  .eyebrow{font-size:.72rem;letter-spacing:.36em;text-transform:uppercase;color:var(--gold-light);margin:0 0 1.4rem}
+  .names{font-size:clamp(2.9rem,12vw,6rem);font-weight:400;letter-spacing:.05em;text-transform:uppercase;line-height:1}
+  .names .n{display:block}
+  .names .amp{display:block;font-family:var(--script);font-size:.3em;letter-spacing:.06em;color:var(--gold-light);
+              text-transform:none;margin:.32em 0;line-height:1}
+  .date-line{font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(251,243,231,.92);margin:1.6rem 0 0}
+  .region-line{font-family:var(--serif);font-style:italic;font-size:clamp(1.05rem,3vw,1.35rem);color:var(--gold-light);margin:.5rem 0 0}
+  .script{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(1.1rem,3vw,1.4rem);
+          color:rgba(251,243,231,.9);max-width:34ch;margin:1.6rem auto .2rem}
+  .orn{display:flex;align-items:center;justify-content:center;gap:12px;color:var(--gold);margin:1.5rem 0}
+  .orn::before,.orn::after{content:'';height:1px;width:min(78px,16vw);background:linear-gradient(90deg,transparent,var(--gold))}
+  .orn::after{background:linear-gradient(90deg,var(--gold),transparent)}
+  .orn svg{width:26px;height:12px;flex:none}
+  .chips-row{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:1.4rem}
+  .pill{border:1px solid rgba(227,202,160,.5);border-radius:999px;padding:7px 17px;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase}
+  .pill.soon{border-style:dashed;color:rgba(251,243,231,.78);letter-spacing:.1em;text-transform:none;font-family:var(--serif);font-style:italic;font-size:.95rem}
 
-  .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+  /* Countdown */
+  .countdown{display:flex;justify-content:center;flex-wrap:wrap;gap:clamp(12px,4vw,34px);margin-top:2.1rem}
+  .cd{min-width:74px}
+  .cd b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(1.7rem,6vw,2.5rem);line-height:1;color:#fff}
+  .cd span{display:block;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-light);margin-top:8px}
+  .countdown.done{font-family:var(--serif);font-style:italic;font-size:1.4rem;color:var(--gold-light)}
+
+  /* Buttons */
+  .btn{display:inline-block;margin-top:2.2rem;border:1px solid var(--gold);border-radius:999px;
+       color:var(--gold-light);background:rgba(29,4,10,.25);padding:14px 32px;font-size:.76rem;
+       letter-spacing:.22em;text-transform:uppercase;text-decoration:none;transition:background .25s,color .25s}
+  .btn:hover{background:var(--gold);color:var(--wine-900)}
+  .btn-solid{display:inline-block;background:var(--wine-700);color:var(--cream);border:1px solid var(--wine-700);
+             border-radius:999px;padding:13px 30px;font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;
+             transition:background .25s}
+  .btn-solid:hover{background:var(--wine-900);color:var(--cream)}
+  .btn-ghost{display:inline-block;background:none;border:1px solid var(--gold-deep);color:var(--wine-700);
+             border-radius:999px;padding:11px 22px;font:inherit;font-size:.74rem;letter-spacing:.16em;
+             text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s}
+  .btn-ghost:hover{background:var(--wine-700);color:var(--cream);border-color:var(--wine-700)}
+
+  /* ---------------- Abschnitte ---------------- */
+  section{position:relative;padding:clamp(56px,9vw,104px) 0;scroll-margin-top:78px;overflow:hidden}
+  .cream{background:var(--cream)}
+  .cream-2{background:linear-gradient(180deg,var(--cream-2),var(--cream))}
+  .wine{background:radial-gradient(120% 90% at 50% 0%,var(--wine-700),var(--wine-900) 70%);
+        color:#f2e4d3;border-top:1px solid var(--line-gold);border-bottom:1px solid var(--line-gold)}
+  .wine h2,.wine h3{color:#fbf3e7}
+  .wine a{color:var(--gold-light)}
+  .fl{position:absolute;width:min(340px,36vw);pointer-events:none;opacity:.42;z-index:0}
+  .fl-l{left:calc(clamp(18px,4vw,32px) - 130px);bottom:-30px}
+  .fl-r{right:calc(clamp(18px,4vw,32px) - 130px);bottom:-30px;transform:scaleX(-1)}
+  .tl{top:-30px;bottom:auto}
+  .fl-tr{top:-30px;bottom:auto;right:calc(clamp(18px,4vw,32px) - 130px);left:auto;transform:scaleX(-1) scaleY(-1)}
+  @media(max-width:1080px){.fl{display:none}}
+  section .wrap{position:relative;z-index:1}
+  .sec-head{max-width:62ch;margin-bottom:clamp(26px,4vw,44px)}
+  .sec-title{font-size:clamp(2rem,5.2vw,3.1rem);margin:0 0 .7rem}
+  .wine .eyebrow,.cream .eyebrow{}
+  .cream .eyebrow{color:var(--gold-deep)}
+  .lead{color:var(--ink-soft);max-width:60ch}
+  .wine .lead{color:rgba(242,228,211,.85)}
+  .center{text-align:center}
+  .center .sec-head,.center .lead{margin-left:auto;margin-right:auto}
+
+  /* Faktenreihe (Creme, drei Spalten mit goldener Trennlinie) */
+  .facts{display:grid;gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  @media(min-width:760px){.facts{grid-template-columns:repeat(3,1fr)}}
+  .fact{padding:26px 22px;text-align:center}
+  @media(min-width:760px){
+    .fact + .fact{border-left:1px solid var(--line)}
+  }
+  @media(max-width:759px){.fact + .fact{border-top:1px solid var(--line)}}
+  .fact svg{width:26px;height:26px;margin:0 auto 12px;color:var(--gold-deep)}
+  .fact .k{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-deep)}
+  .fact .v{font-family:var(--serif);font-size:clamp(1.25rem,3vw,1.75rem);margin:.35rem 0 .3rem;color:var(--wine-700)}
+  .fact .s{font-size:.85rem;color:var(--ink-soft);margin:0}
+
+  /* Kacheln im bordeauxroten Abschnitt */
+  .tiles{display:grid;gap:1px;background:var(--line-gold);border:1px solid var(--line-gold);border-radius:var(--radius);overflow:hidden}
+  @media(min-width:640px){.tiles{grid-template-columns:1fr 1fr}}
+  @media(min-width:1000px){.tiles{grid-template-columns:repeat(4,1fr)}}
+  .tile{background:rgba(29,4,10,.28);padding:26px 22px}
+  .tile svg{width:26px;height:26px;color:var(--gold);margin-bottom:14px}
+  .tile h3{font-size:1.35rem;margin-bottom:.4rem;color:var(--gold-light)}
+  .tile p{font-size:.9rem;color:rgba(242,228,211,.8);margin:0}
+  .tile b{font-weight:400;font-family:var(--serif);font-size:1.15rem;color:#fbf3e7;display:block;margin-bottom:.3rem}
+
+  /* Schlüsselliste */
+  .kv{display:grid;grid-template-columns:1fr;gap:0;margin:0}
+  @media(min-width:560px){.kv{grid-template-columns:180px 1fr}}
+  .kv dt{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-deep);padding:14px 0 4px}
+  .kv dd{margin:0;padding:0 0 14px;border-bottom:1px solid var(--line);color:var(--ink)}
+  @media(min-width:560px){
+    .kv dt{padding:14px 20px 14px 0;border-bottom:1px solid var(--line)}
+    .kv dd{padding:14px 0}
+  }
+  .kv dd em{color:var(--ink-soft)}
+
+  /* Hinweise */
+  .note{background:var(--cream-3);border:1px solid var(--line);border-left:3px solid var(--gold-deep);
+        border-radius:0 var(--radius) var(--radius) 0;padding:18px 20px;font-size:.93rem;color:var(--ink-soft);margin:0}
+  .note strong{font-weight:400;color:var(--wine-700);font-family:var(--serif);font-size:1.1rem}
+  .note-wine{background:rgba(29,4,10,.32);border:1px solid var(--line-gold);border-radius:var(--radius);
+             padding:20px 22px;color:rgba(242,228,211,.85);font-size:.93rem;margin:0}
+  .frame{position:relative;border:1px solid var(--line);border-radius:var(--radius);background:
+         var(--cream-3) url("img/botanical.svg") right -40px bottom -30px / 300px auto no-repeat;
+         padding:clamp(26px,5vw,44px);text-align:center;overflow:hidden}
+  .frame img.seal{width:96px;margin:0 auto 18px}
+  .frame .big{font-family:var(--serif);font-style:italic;font-size:clamp(1.35rem,4vw,2rem);color:var(--wine-700);margin:0 0 .6rem}
+  .frame p{color:var(--ink-soft);margin:0 auto;max-width:38ch}
+
+  /* Geschichte */
+  .story-grid{display:grid;gap:clamp(26px,5vw,54px);align-items:center}
+  @media(min-width:880px){.story-grid{grid-template-columns:1.1fr .9fr}}
+  .quote{font-family:var(--serif);font-style:italic;font-size:clamp(1.3rem,3.6vw,1.9rem);color:var(--wine-700);
+         line-height:1.4;max-width:26ch}
+  .nick{font-size:.74rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-deep)}
+
+  /* FAQ */
+  .faq{border-top:1px solid var(--line)}
+  .faq details{border-bottom:1px solid var(--line)}
+  .faq summary{cursor:pointer;list-style:none;display:flex;align-items:flex-start;gap:16px;
+               font-family:var(--serif);font-size:clamp(1.15rem,2.6vw,1.4rem);color:var(--wine-700);padding:20px 0}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:'+';margin-left:auto;font-family:var(--sans);font-weight:300;color:var(--gold-deep);
+                      font-size:1.3rem;line-height:1.2;transition:transform .25s}
+  .faq details[open] summary::after{transform:rotate(45deg)}
+  .faq .faq-body{padding:0 0 22px;color:var(--ink-soft);max-width:70ch}
+  .faq .faq-body p{margin-bottom:.7rem}
+  .faq .faq-body p:last-child{margin-bottom:0}
+  .faq a{font-family:var(--serif);font-size:1.15rem;letter-spacing:.03em}
+
+  /* ---------------- Formular ---------------- */
+  .deadline{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px;
+            border:1px solid var(--gold-deep);border-radius:999px;padding:12px 24px;margin:0 auto clamp(26px,4vw,40px);
+            max-width:max-content;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--wine-700)}
+  .deadline b{font-family:var(--serif);font-size:1.15rem;letter-spacing:.06em;text-transform:none;font-weight:500}
+  .config-note{background:#fdf3e7;border:1px dashed var(--gold-deep);border-radius:var(--radius);
+               padding:14px 18px;font-size:.88rem;color:var(--ink-soft);max-width:70ch;margin:0 auto 26px}
+  .form{background:var(--cream-3);border:1px solid var(--line);border-radius:var(--radius);
+        padding:clamp(20px,4vw,44px);box-shadow:0 20px 46px rgba(58,10,22,.07)}
+  .fset{border:0;padding:0;margin:0 0 clamp(26px,4vw,38px)}
+  .fset:last-of-type{margin-bottom:0}
+  .fset legend{font-family:var(--serif);font-size:clamp(1.3rem,3.4vw,1.7rem);color:var(--wine-700);
+               padding:0 0 6px;letter-spacing:.01em}
+  .fset > .hint{margin:-.2rem 0 1.3rem;color:var(--ink-soft);font-size:.9rem;max-width:62ch}
+  .hint{display:block}
+  .field{display:block;margin-bottom:16px}
+  .lab{display:block;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:7px}
+  .lab .req{color:var(--wine-600)}
+  input[type=text],input[type=email],select,textarea{width:100%;font:inherit;font-weight:400;font-size:1rem;
+        color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:4px;padding:12px 14px}
+  input::placeholder,textarea::placeholder{color:#b3a390}
+  textarea{min-height:120px;resize:vertical}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--gold-deep);outline-offset:1px;border-color:var(--gold-deep)}
+  .trio{display:grid;gap:16px;grid-template-columns:1fr}
+  @media(min-width:600px){.trio{grid-template-columns:1fr 1fr}}
+  .row{display:flex;flex-wrap:wrap;gap:10px}
+  .opt{position:relative;flex:1 1 160px}
+  .opt input{position:absolute;opacity:0;width:1px;height:1px}
+  .opt span{display:block;border:1px solid var(--line);border-radius:999px;padding:12px 16px;cursor:pointer;
+            font-size:.9rem;letter-spacing:.04em;background:#fff;text-align:center;transition:background .2s,color .2s,border-color .2s}
+  .opt span:hover{border-color:var(--gold-deep)}
+  .opt input:checked + span{background:var(--wine-700);color:var(--cream);border-color:var(--wine-700)}
+  .opt input:focus-visible + span{outline:2px solid var(--gold-deep);outline-offset:2px}
+  .chips{display:flex;flex-wrap:wrap;gap:9px}
+  .chip{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:999px;
+        padding:9px 15px;font-size:.86rem;cursor:pointer;background:#fff}
+  .chip:hover{border-color:var(--gold-deep)}
+  .chip input{accent-color:var(--wine-700);width:16px;height:16px}
+  .chip input:focus-visible{outline:2px solid var(--gold-deep);outline-offset:2px}
+  .persons{display:grid;gap:16px;margin-bottom:16px}
+  .person{border:1px solid var(--line);border-radius:var(--radius);padding:clamp(16px,3vw,22px);background:#fff;position:relative}
+  .person::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--gold),var(--wine-600));border-radius:3px 0 0 3px}
+  .person-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+  .person-name{font-family:var(--serif);font-size:1.2rem;color:var(--wine-700)}
+  .btn-mini{background:none;border:1px solid var(--line);border-radius:999px;padding:7px 14px;font:inherit;
+            font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);cursor:pointer}
+  .btn-mini:hover{border-color:var(--wine-700);color:var(--wine-700)}
+  .optrow{border:0;border-top:1px dashed var(--line);padding:16px 0 0;margin:16px 0 0;min-width:0}
+  .optrow-label{display:block;padding:0;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
+                color:var(--ink-soft);margin-bottom:10px}
+  .mode-absage .person-opts,.mode-absage #planungsfelder{display:none}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px}
+  .consent{display:flex;gap:12px;align-items:flex-start;font-size:.88rem;color:var(--ink-soft);
+           border:1px solid var(--line);border-radius:var(--radius);padding:16px;background:var(--cream)}
+  .consent input{accent-color:var(--wine-700);width:18px;height:18px;margin-top:3px;flex:none}
+  .submit{margin-top:24px;width:100%;background:var(--wine-700);color:var(--cream);border:1px solid var(--wine-700);
+          border-radius:999px;padding:16px 22px;font:inherit;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;
+          cursor:pointer;transition:background .25s}
+  .submit:hover{background:var(--wine-900)}
+  .submit[disabled]{opacity:.55;cursor:progress}
+  .invalid input,.invalid select,.invalid textarea{border-color:var(--err);background:#fdf4f3}
+  .invalid.consent,.invalid.person,.invalid.optrow{border-color:var(--err)}
+  .fset.invalid legend{color:var(--err)}
+  .fset.invalid > .hint{color:var(--err)}
+  .invalid.optrow{border-top-color:var(--err)}
+  .err-panel{display:none;margin-top:20px;background:#fdf1ef;border:1px solid #e4b6ad;border-left:3px solid var(--err);
+             border-radius:0 var(--radius) var(--radius) 0;padding:16px 20px;color:var(--err);font-size:.9rem}
+  .err-panel.on{display:block}
+  .err-panel ul{list-style:disc;padding-left:20px;margin:0}
+  .err-panel li{margin-bottom:5px}
+  .err-panel li:last-child{margin-bottom:0}
+  .result{display:none;border:1px solid var(--gold-deep);border-radius:var(--radius);background:var(--cream-3);
+          padding:clamp(24px,5vw,44px);text-align:center}
+  .result.on{display:block}
+  .result h3{font-size:clamp(1.7rem,5vw,2.4rem);color:var(--wine-700);margin-bottom:.6rem}
+  .result p{color:var(--ink-soft);max-width:56ch;margin:0 auto 1rem}
+  .result pre{background:var(--cream-2);border:1px solid var(--line);border-radius:4px;padding:16px;text-align:left;
+              font-family:ui-monospace,Consolas,monospace;font-size:.78rem;line-height:1.55;overflow:auto;white-space:pre-wrap;
+              word-break:break-word;color:#4a3229}
+  .result .row{justify-content:center;margin-top:20px}
+
+  /* ---------------- Footer ---------------- */
+  footer{background:linear-gradient(180deg,var(--wine-800),var(--wine-950));color:rgba(242,228,211,.8);
+         border-top:1px solid var(--line-gold);padding:clamp(46px,7vw,72px) 0 44px;text-align:center;position:relative;overflow:hidden}
+  footer .seal{width:86px;margin:0 auto 20px}
+  footer .mono{font-family:var(--serif);font-size:clamp(1.5rem,4vw,2rem);letter-spacing:.22em;color:var(--gold-light);text-transform:uppercase}
+  footer .date{font-size:.74rem;letter-spacing:.28em;text-transform:uppercase;margin:12px 0 4px;color:rgba(242,228,211,.8)}
+  footer .contact{font-family:var(--serif);font-style:italic;font-size:1.1rem;margin:14px 0 0}
+  footer .contact a{color:var(--gold-light);text-decoration:none;border-bottom:1px solid rgba(201,168,106,.4)}
+  footer .meta{font-size:.76rem;letter-spacing:.06em;color:rgba(242,228,211,.55);margin-top:26px}
+  footer .meta a{color:rgba(242,228,211,.75)}
+
+  /* ---------------- Bewegung ---------------- */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s ease}
   .reveal.in{opacity:1;transform:none}
-  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .reveal{opacity:1;transform:none;transition:none}
+    *{transition-duration:.01ms !important;animation-duration:.01ms !important;animation-iteration-count:1 !important}
+  }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
 
-<nav class="nav">
-  <div class="wrap">
-    <div class="brand">Lina &amp; Luki</div>
-    <div class="navlinks">
+<!-- Icon-Sprite (LinienIcons in Gold) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4M8 14h3M8 17.5h6"/>
+  </symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 21.2s7-6.4 7-11.2a7 7 0 1 0-14 0c0 4.8 7 11.2 7 11.2Z"/><circle cx="12" cy="10" r="2.6"/>
+  </symbol>
+  <symbol id="i-dress" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="4.6" r="1.7"/><path d="M12 6.3V8"/><path d="M12 8 4.6 13.7c-1 .8-.4 2.4 1 2.4h12.8c1.4 0 2-1.6 1-2.4L12 8Z"/><path d="M9.4 21h5.2"/>
+  </symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="m3.8 7 8.2 6.2L20.2 7"/>
+  </symbol>
+  <symbol id="i-rings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="9.4" cy="15" r="5.2"/><circle cx="15.2" cy="15" r="5.2"/><path d="m15.2 4 1.7 2.4-1.7 2.4L13.5 6.4 15.2 4Z"/>
+  </symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20.2 15A8.6 8.6 0 0 1 9 3.8 8.6 8.6 0 1 0 20.2 15Z"/><path d="M17 5.5v3M15.5 7h3"/>
+  </symbol>
+  <symbol id="i-road" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 3 5 21M15 3l4 18M12 4.5v3M12 11v3M12 17.5v3"/>
+  </symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6.4 3h3.1l1.6 4-2.1 1.6a12.4 12.4 0 0 0 6.4 6.4L17 12.9l4 1.6v3.1A2.3 2.3 0 0 1 18.6 20 16.6 16.6 0 0 1 4 5.4 2.3 2.3 0 0 1 6.4 3Z"/>
+  </symbol>
+  <symbol id="i-plate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8.4"/><circle cx="12" cy="12" r="4.4"/>
+  </symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 21c0-8 3-13 9-15 1.4 7-2.6 13.4-9 13.4"/><path d="M12 21C7 19 4.4 14.6 5 8c5.2 1 7.4 5 7 13"/>
+  </symbol>
+  <symbol id="i-diamond" viewBox="0 0 30 12" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+    <path d="M15 1.5 19 6l-4 4.5L11 6l4-4.5Z"/><path d="M4 6h5.5M20.5 6H26"/>
+  </symbol>
+</svg>
+
+<nav class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#willkommen">
+      <img class="brand-mark" src="img/monogram.svg" alt="" aria-hidden="true">
+      <span>Celina &amp; Lukas</span>
+    </a>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="navlinks">
+      <span>Menü</span><span class="bars" aria-hidden="true"></span>
+    </button>
+    <div class="navlinks" id="navlinks">
+      <a href="#willkommen">Willkommen</a>
       <a href="#geschichte">Unsere Geschichte</a>
-      <a href="#ablauf">Ablauf</a>
+      <a href="#ablauf">Hochzeit &amp; Ablauf</a>
       <a href="#ort">Ort &amp; Anreise</a>
       <a href="#uebernachtung">Übernachtung</a>
-      <a href="#faq">FAQ</a>
+      <a href="#faq">Fragen</a>
+      <a class="navcta" href="#rsvp">Rückmeldung</a>
     </div>
-    <a class="navcta" href="#antwort">Antwort</a>
   </div>
 </nav>
 
-<header class="hero">
-  <!-- ▼ PLATZHALTER: hero.jpg (Paarfoto, Querformat) -->
-  <img class="bg" src="img/hero.svg" alt="Platzhalter: Paarfoto">
-  <div class="veil"></div>
+<header class="hero" id="willkommen">
+  <div class="veil" aria-hidden="true"></div>
   <div class="wrap">
     <p class="eyebrow">Wir heiraten</p>
-    <h1>Celina <span class="amp">&amp;</span> Lukas</h1>
-    <p class="nick">Lina &amp; Luki</p>
-    <!-- ▼ PLATZHALTER: Datum & Uhrzeit -->
-    <div class="meta">
-      <span>Samstag, 14. August 2027</span>
-      <span>15:00 Uhr</span>
-      <!-- ▼ PLATZHALTER: Ort -->
-      <span>Landgut am See · Brandenburg an der Havel</span>
+    <h1 class="names">
+      <span class="n">Celina</span>
+      <span class="amp">&amp;</span>
+      <span class="n">Lukas</span>
+    </h1>
+    <p class="date-line">Samstag, 30. September 2028</p>
+    <p class="region-line">Bayern · Oberfranken · Landkreis Bayreuth</p>
+    <div class="orn" aria-hidden="true"><svg viewBox="0 0 30 12"><use href="#i-diamond"/></svg></div>
+    <p class="script">Wir freuen uns von Herzen, diesen Tag mit euch zu feiern.</p>
+    <div class="chips-row">
+      <span class="pill">Lina &amp; Luki</span>
+      <span class="pill soon">Uhrzeit und Location folgen</span>
     </div>
-    <p class="countdown" id="countdown"><b>Noch</b> … Tage</p>
-    <a class="btn" href="#antwort">Bitte zu- oder absagen</a>
+    <div class="countdown" id="countdown" role="timer" aria-label="Countdown bis zur Hochzeit">
+      <div class="cd"><b id="cd-days">–</b><span>Tage</span></div>
+      <div class="cd"><b id="cd-hours">–</b><span>Stunden</span></div>
+      <div class="cd"><b id="cd-mins">–</b><span>Minuten</span></div>
+    </div>
+    <a class="btn" href="#rsvp">Bitte zu- oder absagen</a>
   </div>
 </header>
 
-<section id="geschichte">
-  <div class="wrap grid two">
+<main id="main">
+
+<section id="geschichte" class="cream">
+  <img class="fl fl-l" src="img/botanical.svg" alt="" aria-hidden="true">
+  <div class="wrap story-grid">
     <div>
       <p class="eyebrow">Unsere Geschichte</p>
-      <h2 class="sec-title">Vom ersten Kaffee bis zum Ja-Wort</h2>
-      <!-- ▼ PLATZHALTER: Text durch eure eigene Geschichte ersetzen -->
-      <p class="lead">PLATZHALTER-Text: Erzählt kurz, wie ihr euch kennengelernt habt, wo ihr zusammenwohnt und warum dieser Tag genau dieser Tag ist. Zwei, drei Absätze reichen – die Gäste lesen lieber wenig, dafür persönlich.</p>
-      <p class="lead">PLATZHALTER: zweiter Absatz, z. B. eine kleine Anekdote oder ein Satz darüber, was euch für die Feier wichtig ist.</p>
+      <h2 class="sec-title">Zwei Namen, ein Termin</h2>
+      <p class="lead">Die meisten nennen uns Lina &amp; Luki. Im September 2028 geben wir uns das Ja-Wort –
+        und ihr sollt dabei sein, denn unsere schönsten Momente haben wir nie allein gefeiert.</p>
+      <p class="lead">Wie wir uns gefunden haben, warum es ausgerechnet dieser Tag wird und was wir uns für die
+        Feier wünschen, schreiben wir hier für euch auf, sobald wir die richtigen Worte gefunden haben.</p>
+      <p class="nick" style="margin-top:1.6rem">Lina &amp; Luki</p>
+      <!-- TODO (nur intern, nicht sichtbar): persönliche Geschichte von Celina & Lukas
+           sowie später eigene Fotos an dieser Stelle ergänzen. Bewusst kein Platzhaltertext. -->
     </div>
-    <!-- ▼ PLATZHALTER: couple.jpg -->
-    <div class="photo"><img src="img/couple.svg" alt="Platzhalter: Foto von Lina und Luki"></div>
+    <div>
+      <p class="quote">„Wir freuen uns auf euch – auf lange Tische, gute Musik und darauf,
+        alle, die uns wichtig sind, an einem Abend zu versammeln.“</p>
+      <div class="orn" aria-hidden="true" style="justify-content:flex-start;margin-left:0">
+        <svg viewBox="0 0 30 12"><use href="#i-diamond"/></svg>
+      </div>
+      <p class="lead" style="font-size:.95rem">Celina &amp; Lukas · 30. September 2028</p>
+    </div>
   </div>
 </section>
 
-<section id="ablauf">
+<section id="ablauf" class="wine">
+  <img class="fl fl-l" src="img/botanical.svg" alt="" aria-hidden="true">
+  <img class="fl fl-tr" src="img/botanical.svg" alt="" aria-hidden="true">
+  <div class="wrap center">
+    <div class="sec-head">
+      <p class="eyebrow">Hochzeit &amp; Ablauf</p>
+      <h2 class="sec-title">Der 30. September 2028</h2>
+      <p class="lead" style="margin:0 auto">Wir feiern an einem Samstag im Frühherbst, in Oberfranken.
+        Trauung, Essen und Tanz geben wir bekannt, sobald der Veranstaltungsort bestätigt ist –
+        nichts anderes möchten wir euch vorher versprechen.</p>
+    </div>
+    <ul class="tiles">
+      <li class="tile">
+        <svg aria-hidden="true"><use href="#i-cal"/></svg>
+        <h3>Termin</h3>
+        <b>Samstag, 30. September 2028</b>
+        <p>Die Uhrzeit der Trauung folgt mit der Bestätigung des Ortes.</p>
+      </li>
+      <li class="tile">
+        <svg aria-hidden="true"><use href="#i-pin"/></svg>
+        <h3>Region</h3>
+        <b>Bayern · Oberfranken</b>
+        <p>Landkreis Bayreuth. Der genaue Veranstaltungsort ist noch nicht bestätigt.</p>
+      </li>
+      <li class="tile">
+        <svg aria-hidden="true"><use href="#i-dress"/></svg>
+        <h3>Dresscode</h3>
+        <b>Abendgarderobe</b>
+        <p>Anzug mit Krawatte oder Fliege; langes Kleid, Hosenanzug oder eleganter Jumpsuit.
+           Bitte kein Weiß und keine grellen Farben.</p>
+      </li>
+      <li class="tile">
+        <svg aria-hidden="true"><use href="#i-mail"/></svg>
+        <h3>Rückmeldung</h3>
+        <b>bis 30. September 2027</b>
+        <p>Unten auf dieser Seite könnt ihr uns zu- oder absagen – Person für Person.</p>
+      </li>
+    </ul>
+    <p class="note-wine" style="margin-top:clamp(22px,4vw,34px);text-align:left">
+      <strong>Der stundenweise Ablauf folgt.</strong> Sobald Ort und Zeiten feststehen, ergänzen wir diese
+      Seite und ihr bekommt alle Hinweise – Anfahrt, Programm und Übernachtung – zusätzlich rechtzeitig
+      vor der Hochzeit.
+    </p>
+  </div>
+</section>
+
+<section id="ort" class="cream">
+  <img class="fl fl-r" src="img/botanical.svg" alt="" aria-hidden="true">
   <div class="wrap">
-    <p class="eyebrow">Ablauf</p>
-    <h2 class="sec-title">Was an diesem Tag passiert</h2>
-    <p class="lead">Alle Zeiten sind PLATZHALTER – bitte an den echten Ablauf anpassen.</p>
-    <ul class="timeline">
-      <li><span class="time">14:30</span><div><div class="tl-title">Eintreffen der Gäste</div><div class="tl-note">PLATZHALTER: Begrüßung im Garten, Getränke stehen bereit.</div></div></li>
-      <li><span class="time">15:00</span><div><div class="tl-title">Trauung</div><div class="tl-note">PLATZHALTER: Standesamt / freie Trauung im Freien. Bitte 10 Minuten vorher da sein.</div></div></li>
-      <li><span class="time">16:00</span><div><div class="tl-title">Sektempfang &amp; Fotos</div><div class="tl-note">PLATZHALTER: Glückwünsche, Photoshooting, Musik.</div></div></li>
-      <li><span class="time">18:00</span><div><div class="tl-title">Dinner</div><div class="tl-note">PLATZHALTER: Menü/Buffet. Vegetarische und vegane Varianten sind selbstverständlich vorhanden.</div></div></li>
-      <li><span class="time">20:00</span><div><div class="tl-title">Reden &amp; Tanz</div><div class="tl-note">PLATZHALTER: erster Tanz, Reden, danach DJ.</div></div></li>
-      <li><span class="time">23:30</span><div><div class="tl-title">Open End</div><div class="tl-note">PLATZHALTER: Ende der Feier bzw. Shuttle zurück zum Hotel.</div></div></li>
+    <div class="sec-head">
+      <p class="eyebrow">Ort &amp; Anreise</p>
+      <h2 class="sec-title">Wo gefeiert wird</h2>
+      <p class="lead">Feiern werden wir in Bayern, in Oberfranken, im Landkreis Bayreuth.
+        Adresse und Uhrzeit nennen wir erst, wenn sie bestätigt sind – damit bei euch keine falschen Angaben ankommen.</p>
+    </div>
+    <div class="story-grid">
+      <dl class="kv">
+        <dt>Region</dt><dd>Bayern · Oberfranken · Landkreis Bayreuth</dd>
+        <dt>Veranstaltungsort</dt><dd><em>wird bekannt gegeben</em></dd>
+        <dt>Adresse</dt><dd><em>folgt nach der Bestätigung der Location</em></dd>
+        <dt>Uhrzeit</dt><dd><em>folgt zusammen mit der Adresse</em></dd>
+        <dt>Anfahrt &amp; Parken</dt><dd><em>Hinweise zur Anreise erhaltet ihr, sobald der Ort feststeht</em></dd>
+      </dl>
+      <div class="frame">
+        <img class="seal" src="img/monogram.svg" alt="Monogramm C &amp; L">
+        <p class="big">Weitere Informationen zur Location folgen</p>
+        <p>Ihr erfahrt alles zur Adresse, zur Uhrzeit und zur Anreise, sobald der Veranstaltungsort
+           bestätigt ist – hier auf der Seite und noch einmal direkt per Nachricht.</p>
+      </div>
+    </div>
+    <p class="note" style="margin-top:clamp(22px,4vw,34px)">
+      <strong>Fragen zur Anreise?</strong> Ruft uns gerne an –
+      <a href="tel:+491627909083">Celina ist unter +49&nbsp;162&nbsp;7909083 erreichbar</a>.
+    </p>
+  </div>
+</section>
+
+<section id="uebernachtung" class="cream-2">
+  <img class="fl fl-l tl" src="img/botanical.svg" alt="" aria-hidden="true">
+  <div class="wrap center">
+    <div class="sec-head">
+      <p class="eyebrow">Übernachtung</p>
+      <h2 class="sec-title">Bleibt über Nacht</h2>
+      <p class="lead" style="margin:0 auto">Im Raum Bayreuth und rund um den Landkreis gibt es viele Unterkünfte –
+        von ganz einfach bis sehr fein. Konkrete Empfehlungen mit Entfernungen und Kontaktdaten stellen wir
+        gerade zusammen und veröffentlichen sie hier, sobald wir sie selbst geprüft haben.</p>
+    </div>
+    <ul class="facts" style="max-width:900px;margin:0 auto">
+      <li class="fact">
+        <svg aria-hidden="true"><use href="#i-moon"/></svg>
+        <p class="k">Übernachten</p>
+        <p class="v">Ja oder nein</p>
+        <p class="s">Sagt uns unten im Formular, ob ihr über Nacht bleibt – das hilft bei der Planung.</p>
+      </li>
+      <li class="fact">
+        <svg aria-hidden="true"><use href="#i-leaf"/></svg>
+        <p class="k">Empfehlungen</p>
+        <p class="v">folgen</p>
+        <p class="s">Eine geprüfte Liste mit Unterkünften in der Region ergänzen wir hier.</p>
+      </li>
+      <li class="fact">
+        <svg aria-hidden="true"><use href="#i-phone"/></svg>
+        <p class="k">Fragen</p>
+        <p class="v">Celina anrufen</p>
+        <p class="s"><a href="tel:+491627909083">+49&nbsp;162&nbsp;7909083</a></p>
+      </li>
     </ul>
   </div>
 </section>
 
-<section id="ort">
-  <div class="wrap grid two">
-    <div>
-      <p class="eyebrow">Ort &amp; Anreise</p>
-      <h2 class="sec-title">Landgut am See</h2>
-      <!-- ▼ PLATZHALTER: echte Adresse -->
-      <dl class="kv">
-        <dt>Adresse</dt><dd>PLATZHALTER – Musterstraße 1, 14774 Brandenburg an der Havel</dd>
-        <dt>Parkplätze</dt><dd>PLATZHALTER – direkt am Gut, kostenlos, ca. 40 Plätze.</dd>
-        <dt>Bahnhof</dt><dd>PLATZHALTER – Bahnhof Brandenburg, 8 km. Shuttle gegen Anmeldung (siehe Formular).</dd>
-        <dt>Shuttle</dt><dd>PLATZHALTER – Haltestelle/Zeit, z. B. 14:00 ab Bahnhof.</dd>
-      </dl>
-      <p class="note" style="margin-top:18px">PLATZHALTER: Hinweis fürs Navi, z. B. „Bitte ‚Landgut am See‘ als Ziel eingeben, die Zufahrt ist beschildert.“</p>
-    </div>
-    <div>
-      <!-- ▼ PLATZHALTER: venue.jpg -->
-      <div class="photo" style="margin-bottom:16px"><img src="img/venue.svg" alt="Platzhalter: Foto der Location"></div>
-      <!-- ▼ PLATZHALTER: map.jpg ersetzen oder Google-Karte einbetten -->
-      <div class="photo"><img src="img/map.svg" alt="Platzhalter: Kartenausschnitt"></div>
-      <p style="margin-top:14px"><a href="https://www.google.com/maps/search/?api=1&query=PLATZHALTER-Adresse" target="_blank" rel="noopener">Route in Google Maps öffnen</a></p>
-    </div>
-  </div>
-</section>
-
-<section id="uebernachtung">
+<section id="faq" class="cream">
+  <img class="fl fl-r" src="img/botanical.svg" alt="" aria-hidden="true">
   <div class="wrap">
-    <p class="eyebrow">Übernachtung</p>
-    <h2 class="sec-title">Bleibt ihr über Nacht?</h2>
-    <p class="lead">PLATZHALTER-Text: drei Unterkünfte mit Abstand, Preisen und Buchungsweg. Bitte echte Daten einsetzen.</p>
-    <div class="grid three" style="margin-top:24px">
-      <div class="card"><p class="tag">Hotel</p><h3>PLATZHALTER Hotelname</h3><p>0,5 km · ab 95 € · Zimmer unter <em>hotel@example.com</em> reservieren, Stichwort „Lina &amp; Luki“.</p></div>
-      <div class="card"><p class="tag">Pension</p><h3>PLATZHALTER Pension</h3><p>2 km · ab 70 € · begrenztes Kontingent bis 1. Juli 2027.</p></div>
-      <div class="card"><p class="tag">Camping</p><h3>PLATZHALTER Stellplatz</h3><p>Am Gut · Wohnmobil/Zelt · bitte im Formular anmelden.</p></div>
+    <div class="sec-head">
+      <p class="eyebrow">Häufige Fragen</p>
+      <h2 class="sec-title">Gut zu wissen</h2>
     </div>
-  </div>
-</section>
-
-<section id="essen">
-  <div class="wrap grid two">
-    <div>
-      <p class="eyebrow">Essen &amp; Getränke</p>
-      <h2 class="sec-title">Vegetarisch, vegan, glutenfrei?</h2>
-      <p class="lead">Wir planen das Menü, damit niemand hungern muss. Tragt eure Essenswünsche bitte im Formular ein – wir rechnen dann fest.</p>
-      <p class="note">PLATZHALTER: Menü-Beschreibung, z. B. „3-Gang-Menü, Buffet, Dessert. Allergene sagen wir vorab an.“</p>
-    </div>
-    <div class="gallery">
-      <!-- ▼ PLATZHALTER: gallery-1..3.jpg -->
-      <div class="photo"><img src="img/gallery-1.svg" alt="Platzhalterfoto 1"></div>
-      <div class="photo"><img src="img/gallery-2.svg" alt="Platzhalterfoto 2"></div>
-      <div class="photo"><img src="img/gallery-3.svg" alt="Platzhalterfoto 3"></div>
-    </div>
-  </div>
-</section>
-
-<section id="geschenke">
-  <div class="wrap">
-    <p class="eyebrow">Geschenke</p>
-    <h2 class="sec-title">Schenkt uns Zeit, nicht Dinge</h2>
-    <p class="lead">PLATZHALTER: Wunschliste oder Spenden-Text. Falls ihr eine Liste habt, hier den Link einsetzen, sonst diesen Absatz nutzen.</p>
-  </div>
-</section>
-
-<section id="faq">
-  <div class="wrap">
-    <p class="eyebrow">FAQ</p>
-    <h2 class="sec-title">Häufige Fragen</h2>
-    <details><summary>Dresscode?</summary><p>PLATZHALTER: z. B. „Fein, aber nicht steif. Farbwünsche: Salbei, Sand, Terrakotta.“</p></details>
-    <details><summary>Kinder?</summary><p>PLATZHALTER: „Kinder sind willkommen, Bitte im Formular anmelden. Betreuung von 20–22 Uhr.“</p></details>
-    <details><summary>Bis wann muss ich antworten?</summary><p>PLATZHALTER: Rückmeldetermin, z. B. 1. Juli 2027.</p></details>
-    <details><summary>Wie komme ich vom Bahnhof zur Location?</summary><p>PLATZHALTER: Shuttlezeiten oder Taxi-Hinweis.</p></details>
-    <details><summary>Wen kontaktiere ich bei Fragen?</summary><p>PLATZHALTER: Name + Telefon/E-Mail der Hochzeitsplaner.</p></details>
-  </div>
-</section>
-
-<section id="antwort">
-  <div class="wrap">
-    <p class="eyebrow">Rückmeldung</p>
-    <h2 class="sec-title">Bitte sagt uns zu oder ab</h2>
-    <p class="lead">Das Formular dauert etwa zwei Minuten. PLATZHALTER: Rückmeldetermin bis <em>1. Juli 2027</em>.</p>
-
-    <form class="form" id="rsvp" novalidate>
-      <fieldset class="fgroup">
-        <legend>Wer meldet sich?</legend>
-        <div class="field">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" autocomplete="name" required placeholder="Vor- und Nachname">
+    <div class="faq">
+      <details>
+        <summary>Welcher Dresscode gilt?</summary>
+        <div class="faq-body">
+          <p>Wir feiern in Abendgarderobe und freuen uns auf elegante Outfits.</p>
+          <p>Für die Herren ist ein Anzug mit Krawatte oder Fliege verpflichtend.</p>
+          <p>Für die Damen sind ein langes Kleid, ein Hosenanzug oder ein eleganter Jumpsuit passend.</p>
+          <p>Bitte verzichtet auf grelle Farben und auf Weiß.</p>
         </div>
-        <div class="field">
-          <label for="email">E-Mail (optional, für Rückfragen)</label>
-          <input type="email" id="email" name="email" autocomplete="email" placeholder="name@example.com">
+      </details>
+      <details>
+        <summary>Was gibt es zu essen?</summary>
+        <div class="faq-body">
+          <p>Ihr wählt euer Menü selbst: <em>Mit Fleisch</em>, <em>Vegetarisch</em> oder <em>Vegan</em>.
+            Zusätzlich könnt ihr Glutenfreiheit, Laktosefreiheit, den Verzicht auf Nüsse oder auf
+            Meeresfrüchte angeben. Beides tragt ihr bitte bei eurer Rückmeldung für jede Person einzeln ein.</p>
         </div>
+      </details>
+      <details>
+        <summary>Steht die Location schon fest?</summary>
+        <div class="faq-body">
+          <p>Noch nicht. Gefeiert wird in Bayern, Oberfranken, im Landkreis Bayreuth. Adresse und Uhrzeit
+            geben wir bekannt, sobald sie bestätigt sind – so stehen bei euch keine Angaben, die sich
+            wieder ändern.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Wo kann ich übernachten?</summary>
+        <div class="faq-body">
+          <p>Eine geprüfte Übersicht mit Unterkünften in der Region folgt. Tragt im Formular einfach ein,
+            ob ihr über Nacht bleiben möchtet – dann melden wir uns bei euch, sobald die Empfehlungen stehen.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Bis wann soll ich antworten?</summary>
+        <div class="faq-body">
+          <p>Bitte gib uns bis zum <strong>30. September 2027</strong> Bescheid, ob du dabei bist.</p>
+        </div>
+      </details>
+      <details>
+        <summary>An wen kann ich mich bei Fragen wenden?</summary>
+        <div class="faq-body">
+          <p>Bei weiteren Fragen kannst du Celina direkt kontaktieren:
+            <a href="tel:+491627909083">+49&nbsp;162&nbsp;7909083</a></p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="rsvp" class="cream-2">
+  <img class="fl fl-l" src="img/botanical.svg" alt="" aria-hidden="true">
+  <img class="fl fl-r" src="img/botanical.svg" alt="" aria-hidden="true">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="eyebrow">Rückmeldung</p>
+      <h2 class="sec-title">Sagt uns zu – oder ab</h2>
+      <p class="lead" style="margin:0 auto">Das Formular dauert zwei Minuten. Bitte nennt jede Person mit
+        Vor- und Nachnamen – die Namen stehen später auf den Tischkärtchen.</p>
+    </div>
+
+    <p class="deadline"><span>Rückmeldefrist</span> <b>30. September 2027</b></p>
+
+    <p class="config-note" id="config-note" hidden>
+      <strong>Technischer Hinweis:</strong> Der automatische E-Mail-Versand dieser Seite ist noch nicht
+      eingerichtet. Du kannst deine Rückmeldung unten prüfen und kopieren; sicher übermitteln wir sie
+      telefonisch oder per E-Mail an Celina (<a href="tel:+491627909083">+49&nbsp;162&nbsp;7909083</a>).
+    </p>
+
+    <form class="form" id="rsvp-form" novalidate>
+      <fieldset class="fset">
+        <legend>Wer antwortet?</legend>
+        <span class="hint">Die Person, die diese Rückmeldung abschickt – auch im Namen anderer.</span>
+        <div class="trio">
+          <label class="field" id="f-main-first">
+            <span class="lab">Vorname <span class="req">*</span></span>
+            <input type="text" id="main-first" name="main_first" autocomplete="given-name" autocapitalize="words" required>
+          </label>
+          <label class="field" id="f-main-last">
+            <span class="lab">Nachname <span class="req">*</span></span>
+            <input type="text" id="main-last" name="main_last" autocomplete="family-name" autocapitalize="words" required>
+          </label>
+        </div>
+        <label class="field" id="f-email">
+          <span class="lab">E-Mail-Adresse <span class="req">*</span></span>
+          <input type="email" id="email" name="email" autocomplete="email" inputmode="email"
+                 placeholder="name@beispiel.de" required aria-describedby="email-hint">
+        </label>
+        <span class="hint" id="email-hint">Wir brauchen die Adresse, damit wir bei Rückfragen erreichbar sind.</span>
       </fieldset>
 
-      <fieldset class="fgroup">
-        <legend>Zusage oder Absage</legend>
+      <fieldset class="fset" id="f-teilnahme">
+        <legend>Nimmt ihr teil?</legend>
+        <span class="hint">Eine Rückmeldung für die gesamte Gruppe – die genaue Zu- oder Absage jeder Person folgt im nächsten Schritt.</span>
         <div class="row">
-          <label class="opt"><input type="radio" name="teilnahme" value="Zusage" required><span>Ich komme 🎉</span></label>
-          <label class="opt"><input type="radio" name="teilnahme" value="Absage"><span>Leider keine Zeit</span></label>
+          <label class="opt"><input type="radio" name="teilnahme" value="Zusage"><span>Ich bin dabei</span></label>
+          <label class="opt"><input type="radio" name="teilnahme" value="Absage"><span>Leider kann ich nicht teilnehmen</span></label>
         </div>
       </fieldset>
 
-      <div id="details">
-        <fieldset class="fgroup">
-          <legend>Anzahl Personen</legend>
-          <div class="duo">
-            <div class="field"><label for="adults">Erwachsene</label><input type="number" id="adults" name="adults" min="1" max="12" value="1"></div>
-            <div class="field"><label for="kids">Kinder</label><input type="number" id="kids" name="kids" min="0" max="8" value="0"></div>
-          </div>
-        </fieldset>
+      <fieldset class="fset">
+        <legend>Wer ist dabei?</legend>
+        <span class="hint">Bitte jede Person einzeln – mit Vornamen und Nachnamen. Wer nicht kommt,
+          kann einzeln absagen. Dein eigener Name aus dem ersten Abschnitt steht schon in der ersten Karte.</span>
+        <ul class="persons" id="person-list"></ul>
+        <button class="btn-ghost" type="button" id="add-person">+ Weitere Person hinzufügen</button>
+      </fieldset>
 
-        <fieldset class="fgroup">
-          <legend>Essen</legend>
-          <p class="hint">Hauptvariante wählen, zusätzlich Unverträglichkeiten ankreuzen.</p>
-          <div class="row">
-            <label class="opt"><input type="radio" name="essen" value="Standard"><span>Mit Fleisch</span></label>
-            <label class="opt"><input type="radio" name="essen" value="Vegetarisch"><span>Vegetarisch</span></label>
-            <label class="opt"><input type="radio" name="essen" value="Vegan"><span>Vegan</span></label>
-          </div>
-          <div class="chips" style="margin-top:14px">
-            <label class="chip"><input type="checkbox" name="unver" value="glutenfrei"> Glutenfrei</label>
-            <label class="chip"><input type="checkbox" name="unver" value="laktosefrei"> Laktosefrei</label>
-            <label class="chip"><input type="checkbox" name="unver" value="ohne Nüsse"> Keine Nüsse</label>
-            <label class="chip"><input type="checkbox" name="unver" value="ohne Meeresfrüchte"> Keine Meeresfrüchte</label>
-          </div>
-          <div class="field" style="margin-top:14px">
-            <label for="allergie">Allergien &amp; Unverträglichkeiten (Details)</label>
-            <input type="text" id="allergie" name="allergie" placeholder="z. B. stark gegen Histamin, Kinder mögen keine Tomaten">
-          </div>
-        </fieldset>
-
-        <fieldset class="fgroup">
+      <div id="planungsfelder">
+        <fieldset class="fset" id="f-uebernachtung">
           <legend>Übernachtung</legend>
+          <span class="hint">Bleibt ihr über Nacht? Eine geprüfte Übersicht mit Unterkünften in der Region folgt.</span>
           <div class="row">
-            <label class="opt"><input type="radio" name="uebernachtung" value="Ja" data-show="uebernachtung-details"><span>Ich bleibe über Nacht</span></label>
+            <label class="opt"><input type="radio" name="uebernachtung" value="Ja"><span>Ich bleibe über Nacht</span></label>
             <label class="opt"><input type="radio" name="uebernachtung" value="Nein"><span>Ich reise an und ab</span></label>
           </div>
-          <div id="uebernachtung-details" class="duo" style="margin-top:14px;display:none">
-            <div class="field">
-              <label for="unterkunft">Unterkunftswunsch</label>
-              <select id="unterkunft" name="unterkunft">
-                <option value="">Bitte wählen</option>
-                <!-- ▼ PLATZHALTER: echte Unterkünfte -->
-                <option>PLATZHALTER Hotelname</option>
-                <option>PLATZHALTER Pension</option>
-                <option>Am Gut (Wohnmobil/Zelt)</option>
-                <option>Suche selbst</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="naechte">Nächte</label>
-              <select id="naechte" name="naechte"><option value="">egal</option><option>1 Nacht</option><option>2 Nächte</option></select>
-            </div>
-          </div>
         </fieldset>
 
-        <fieldset class="fgroup">
+        <fieldset class="fset" id="f-anreise">
           <legend>Anreise</legend>
-          <div class="field">
-            <label for="anreise">Wie kommt ihr?</label>
+          <span class="hint">Wann reist ihr an?</span>
+          <label class="field" id="f-anreise-tag">
+            <span class="lab">Anreisetag</span>
             <select id="anreise" name="anreise">
               <option value="">Bitte wählen</option>
-              <option>Auto</option><option>Bahn</option><option>Fernbus</option><option>Fahrrad</option><option>Taxi/Shuttle</option>
+              <option value="Freitag, 29. September 2028">Freitag, 29. September 2028</option>
+              <option value="Samstag, 30. September 2028">Samstag, 30. September 2028</option>
             </select>
-          </div>
-          <div class="chips">
-            <label class="chip"><input type="checkbox" name="shuttle" value="Shuttle vom Bahnhof nötig"> Shuttle vom Bahnhof nötig</label>
-            <label class="chip"><input type="checkbox" name="mitfahrt" value="Biete Mitfahrt an"> Ich biete Mitfahrt an</label>
-          </div>
-        </fieldset>
-
-        <fieldset class="fgroup">
-          <legend>Noch etwas?</legend>
-          <div class="field">
-            <label for="bemerkung">Anmerkungen</label>
-            <textarea id="bemerkung" name="bemerkung" placeholder="z. B. Redebeitrag, Musikwunsch, veganer Kuchen, Fragen …"></textarea>
-          </div>
+          </label>
         </fieldset>
       </div>
 
-      <label class="hp" for="company">Firma (Bitte nicht ausfüllen)</label>
-      <input class="hp" type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+      <p class="note only-absage" hidden style="margin-bottom:26px">
+        <strong>Schade, dass ihr nicht dabei sein könnt.</strong> danke, dass ihr Bescheid gebt.
+        Wenn ihr mögt, lasst uns unten noch einen Gruß da.
+      </p>
 
-      <label class="consent"><input type="checkbox" id="consent" required> Ich bin damit einverstanden, dass meine Angaben nur für die Hochzeitsplanung verwendet werden.</label>
-      <button class="submit" type="submit" id="send">Absenden</button>
-      <p class="err" id="err"></p>
+      <fieldset class="fset">
+        <legend>Noch etwas?</legend>
+        <span class="hint">Optional – Wünsche, Fragen oder ein Gruß an uns.</span>
+        <label class="field">
+          <span class="lab">Nachricht</span>
+          <textarea id="bemerkung" name="bemerkung" placeholder="z. B. Musikwunsch, Beitrag, Frage oder einfach ein paar Worte"></textarea>
+        </label>
+      </fieldset>
+
+      <label class="hp" for="company">Firma (bitte nicht ausfüllen)</label>
+      <input class="hp" type="text" id="company" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <label class="consent" id="f-consent">
+        <input type="checkbox" id="consent" name="consent" required>
+        <span>Ich bin einverstanden, dass die angegebenen personenbezogenen Daten ausschließlich für die
+          Planung und Durchführung der Hochzeit von Celina &amp; Lukas verwendet werden. <span class="req">*</span></span>
+      </label>
+
+      <button class="submit" type="submit" id="send">Rückmeldung absenden</button>
+
+      <div class="err-panel" id="err" role="alert" tabindex="-1">
+        <ul id="err-list"></ul>
+      </div>
     </form>
 
-    <div class="thanks card" id="thanks">
-      <h3>Danke – notiert!</h3>
-      <p>PLATZHALTER-Hinweis: Solange kein Backend steht, öffnet sich das E-Mail-Programm des Gastes mit der fertig zusammengebauten Nachricht. Sobald der Versandserver läuft, wird die Antwort direkt an <em>rsvp@lina-luki-wedding.de</em> geschickt.</p>
-      <pre id="summary"></pre>
-      <div class="row" style="justify-content:center">
-        <button class="ghost" type="button" id="copy">Antwort kopieren</button>
-        <button class="ghost" type="button" id="again">Erneut ausfüllen</button>
+    <div class="result" id="result" role="status" aria-live="polite" tabindex="-1">
+      <div class="orn" aria-hidden="true"><svg viewBox="0 0 30 12"><use href="#i-diamond"/></svg></div>
+      <h3 id="result-title">Danke – geschafft!</h3>
+      <p id="result-text"></p>
+      <pre id="summary" hidden></pre>
+      <div class="row">
+        <button class="btn-ghost" type="button" id="copy">Antwort kopieren</button>
+        <button class="btn-ghost" type="button" id="again">Erneut ausfüllen</button>
       </div>
     </div>
+
+    <noscript>
+      <p class="note" style="margin-top:24px">Für das Rückmeldeformular bitte JavaScript im Browser aktivieren.
+        Alternativ erreicht ihr Celina unter <a href="tel:+491627909083">+49&nbsp;162&nbsp;7909083</a>.</p>
+    </noscript>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="wrap">
-    <div>
-      <div class="ornament">Lina &amp; Luki</div>
-      <p style="margin:6px 0 0">PLATZHALTER: Kontakt der Hochzeitsplaner · Telefon · E-Mail</p>
-    </div>
-    <div>
-      <p style="margin:0"><a href="#">Impressum</a> · <a href="#">Datenschutz</a></p>
-    </div>
+    <img class="seal" src="img/monogram.svg" alt="Monogramm C &amp; L">
+    <p class="mono">Celina &amp; Lukas</p>
+    <p class="date">Samstag, 30. September 2028 · Landkreis Bayreuth</p>
+    <p class="orn" aria-hidden="true"><svg viewBox="0 0 30 12"><use href="#i-diamond"/></svg></p>
+    <p class="contact">Fragen? Celina erreichbar unter <a href="tel:+491627909083">+49&nbsp;162&nbsp;7909083</a></p>
+    <p class="meta">Rückmeldungen bis zum 30. September 2027 · Lina &amp; Luki</p>
   </div>
 </footer>
 
+<!-- Vorlage für eine Person im Formular (eine Instanz pro Gast) -->
+<template id="person-tpl">
+  <li class="person">
+    <div class="person-head">
+      <span class="person-name">Person <b class="p-num">1</b></span>
+      <button type="button" class="btn-mini p-remove">entfernen</button>
+    </div>
+    <div class="trio">
+      <label class="field p-f-first">
+        <span class="lab">Vorname <span class="req">*</span></span>
+        <input type="text" class="p-first" autocapitalize="words" autocomplete="off" required>
+      </label>
+      <label class="field p-f-last">
+        <span class="lab">Nachname <span class="req">*</span></span>
+        <input type="text" class="p-last" autocapitalize="words" autocomplete="off" required>
+      </label>
+    </div>
+    <div class="person-opts">
+      <fieldset class="optrow">
+        <span class="optrow-label">Nimmt diese Person teil?</span>
+        <div class="row">
+          <label class="opt"><input type="radio" class="p-attend" data-group="p-attend" value="nimmt teil"><span>Ich bin dabei</span></label>
+          <label class="opt"><input type="radio" class="p-attend" data-group="p-attend" value="sagt ab"><span>Ich kann nicht kommen</span></label>
+        </div>
+      </fieldset>
+      <fieldset class="optrow">
+        <span class="optrow-label">Menü</span>
+        <div class="row">
+          <label class="opt"><input type="radio" class="p-food" data-group="p-food" value="Mit Fleisch"><span>Mit Fleisch</span></label>
+          <label class="opt"><input type="radio" class="p-food" data-group="p-food" value="Vegetarisch"><span>Vegetarisch</span></label>
+          <label class="opt"><input type="radio" class="p-food" data-group="p-food" value="Vegan"><span>Vegan</span></label>
+        </div>
+      </fieldset>
+      <fieldset class="optrow">
+        <span class="optrow-label">Ernährungsbedürfnisse</span>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" class="p-diet" value="glutenfrei"><span>Glutenfrei</span></label>
+          <label class="chip"><input type="checkbox" class="p-diet" value="laktosefrei"><span>Laktosefrei</span></label>
+          <label class="chip"><input type="checkbox" class="p-diet" value="keine Nüsse"><span>Keine Nüsse</span></label>
+          <label class="chip"><input type="checkbox" class="p-diet" value="keine Meeresfrüchte"><span>Keine Meeresfrüchte</span></label>
+        </div>
+      </fieldset>
+    </div>
+  </li>
+</template>
+
 <script>
-/* ▼ PLATZHALTER – alles hier anpassen */
-const CONFIG = {
-  weddingDate: "2027-08-14T15:00:00+02:00",   // Datum/Uhrzeit der Trauung
-  email:       "rsvp@lina-luki-wedding.de",   // Empfänger, wenn kein Backend exists
-  endpoint:    "",                            // Backend-URL, z. B. "/api/rsvp" oder Form-Service
-  rsvpDeadline:"1. Juli 2027"
-};
+(function () {
+  "use strict";
 
-/* Countdown */
-(function(){
-  const el = document.getElementById("countdown");
-  const target = new Date(CONFIG.weddingDate).getTime();
-  function tick(){
-    const days = Math.ceil((target - Date.now()) / 86400000);
-    el.innerHTML = days > 0
-      ? `<b>Noch</b> ${days} Tage bis zum Ja-Wort`
-      : `<b>Es ist soweit</b> – wir heiraten!`;
-  }
-  tick(); setInterval(tick, 60000);
-})();
-
-/* Scroll-Reveal */
-(function(){
-  document.querySelectorAll("section .wrap").forEach(w => w.classList.add("reveal"));
-  const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add("in")), {threshold:.12});
-  document.querySelectorAll(".reveal").forEach(e => io.observe(e));
-})();
-
-/* Bedingte Felder: Sichtbarkeit nach aktiven Auswahl */
-function syncFields(){
-  const details = document.getElementById("details");
-  const absage = document.querySelector('input[name="teilnahme"]:checked');
-  details.style.display = absage && absage.value === "Absage" ? "none" : "block";
-  document.querySelectorAll('input[data-show]').forEach(r => {
-    const box = document.getElementById(r.dataset.show);
-    if (box) box.style.display = r.checked ? "grid" : "none";
-  });
-}
-document.querySelectorAll('input[name="teilnahme"], input[data-show]').forEach(el =>
-  el.addEventListener("change", syncFields));
-
-/* Daten zusammenbauen */
-function collect(f){
-  const g = n => f.elements[n];
-  const checked = [...f.querySelectorAll('input[name="unver"]:checked')].map(i => i.value);
-  const val = n => g(n) ? g(n).value.trim() : "";
-  const radio = n => { const s = f.querySelectorAll(`input[name="${n}"]:checked`); return s.length ? s[0].value : "keine Angabe"; };
-  const cb = n => g(n) && g(n).checked ? "ja" : "nein";
-  return {
-    name: val("name"), email: val("email"),
-    teilnahme: radio("teilnahme"),
-    erwachsene: val("adults") || "1", kinder: val("kids") || "0",
-    essen: radio("essen"),
-    unvertraglichkeiten: checked.length ? checked.join(", ") : "keine",
-    allergien: val("allergie") || "keine",
-    uebernachtung: radio("uebernachtung"),
-    unterkunft: val("unterkunft") || "-", naechte: val("naechte") || "-",
-    anreise: val("anreise") || "-", shuttle: cb("shuttle"), mitfahrt: cb("mitfahrt"),
-    bemerkung: val("bemerkung") || "-",
-    datum: new Date().toLocaleString("de-DE")
+  /* ---------------------------------------------------------
+     Konfiguration
+     --------------------------------------------------------- */
+  var CONFIG = {
+    couple: "Celina & Lukas",
+    /* Hochzeitstag: Samstag, 30. September 2028. Die Uhrzeit ist noch
+       nicht bestätigt – deshalb hier bewusst Mitternacht, der Countdown
+       zählt auf den Tag genau. */
+    weddingDate: "2028-09-30T00:00:00+02:00",
+    weddingDateLabel: "Samstag, 30. September 2028",
+    rsvpDeadline: "30. September 2027",
+    region: "Bayern · Oberfranken · Landkreis Bayreuth",
+    contact: { name: "Celina", phoneHref: "tel:+491627909083", phoneLabel: "+49 162 7909083" },
+    /* Empfänger der Rückmeldungen – noch NICHT bestätigt.
+       Sobald eine Adresse feststeht, hier eintragen, z. B.
+       email: "rsvp@example-domain.de". */
+    email: "",
+    /* Backend-Endpunkt für den Versand, z. B. "/api/rsvp" oder einen
+       Form-Service. Solange leer, wird nichts automatisch versendet. */
+    endpoint: ""
   };
-}
+  var MAX_PERSONS = 10;
 
-function toText(d){
-  return Object.entries(d).map(([k,v]) => `${k}: ${v}`).join("\n");
-}
+  function $(sel, ctx) { return (ctx || document).querySelector(sel); }
+  function $all(sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); }
 
-function showThanks(d){
-  const form = document.getElementById("rsvp");
-  const thanks = document.getElementById("thanks");
-  document.getElementById("summary").textContent = toText(d);
-  form.style.display = "none";
-  thanks.classList.add("on");
-  thanks.scrollIntoView({behavior:"smooth", block:"nearest"});
-}
+  /* ---------------------------------------------------------
+     Countdown
+     --------------------------------------------------------- */
+  (function countdown() {
+    var targets = { days: $("#cd-days"), hours: $("#cd-hours"), mins: $("#cd-mins") };
+    var box = $("#countdown");
+    if (!box || !targets.days) return;
+    var target = new Date(CONFIG.weddingDate).getTime();
 
-document.getElementById("rsvp").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const f = e.target, err = document.getElementById("err"), btn = document.getElementById("send");
-  err.classList.remove("on");
-  if (!f.elements.name.value.trim()) { err.textContent = "Bitte Name eintragen."; err.classList.add("on"); f.elements.name.focus(); return; }
-  if (!f.querySelectorAll('input[name="teilnahme"]:checked').length) { err.textContent = "Bitte Zusage oder Absage wählen."; err.classList.add("on"); return; }
-  if (!f.elements.consent.checked) { err.textContent = "Bitte der Nutzung zustimmen."; err.classList.add("on"); return; }
-
-  const d = collect(f);
-  btn.disabled = true;
-
-  if (CONFIG.endpoint) {
-    try {
-      const res = await fetch(CONFIG.endpoint, {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(d)
-      });
-      if (!res.ok) throw new Error(res.status);
-      showThanks(d);
-    } catch (x) {
-      btn.disabled = false;
-      err.textContent = "Versand gerade nicht möglich – bitte per E-Mail an " + CONFIG.email + ".";
-      err.classList.add("on");
+    function pad(n) { return String(n); }
+    function tick() {
+      var diff = target - Date.now();
+      if (isNaN(target)) { box.classList.add("done"); box.textContent = "Termin wird bekannt gegeben."; return; }
+      if (diff <= 0) {
+        box.classList.add("done");
+        box.innerHTML = "Wir haben geheiratet – danke, dass ihr dabei wart!";
+        return;
+      }
+      var mins = Math.floor(diff / 60000);
+      targets.days.textContent = pad(Math.floor(mins / 1440)).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      targets.hours.textContent = pad(Math.floor(mins / 60) % 24);
+      targets.mins.textContent = pad(mins % 60);
     }
-    return;
+    tick();
+    window.setInterval(tick, 30000);
+  }());
+
+  /* ---------------------------------------------------------
+     Navigation
+     --------------------------------------------------------- */
+  (function nav() {
+    var navEl = $("#nav"), burger = $("#burger"), links = $all("#navlinks a");
+    if (!navEl || !burger) return;
+    burger.addEventListener("click", function () {
+      var open = navEl.classList.toggle("open");
+      burger.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    links.forEach(function (a) {
+      a.addEventListener("click", function () {
+        navEl.classList.remove("open");
+        burger.setAttribute("aria-expanded", "false");
+      });
+    });
+    /* Aktiven Abschnitt markieren */
+    var sections = links.map(function (a) {
+      var id = a.getAttribute("href");
+      return id && id.charAt(0) === "#" ? document.getElementById(id.slice(1)) : null;
+    });
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          links.forEach(function (a, i) {
+            a.classList.toggle("active", sections[i] === e.target);
+          });
+        });
+      }, { rootMargin: "-45% 0px -50% 0px" });
+      sections.forEach(function (s) { if (s) io.observe(s); });
+    }
+  }());
+
+  /* ---------------------------------------------------------
+     Scroll-Reveal
+     --------------------------------------------------------- */
+  (function reveal() {
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var nodes = $all("section .wrap");
+    if (reduce || !("IntersectionObserver" in window)) return;
+    nodes.forEach(function (n) { n.classList.add("reveal"); });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add("in");
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.1 });
+    nodes.forEach(function (n) { io.observe(n); });
+  }());
+
+  /* ---------------------------------------------------------
+     RSVP: Personenverwaltung
+     --------------------------------------------------------- */
+  var form = $("#rsvp-form");
+  var personList = $("#person-list");
+  var tpl = $("#person-tpl");
+  var addBtn = $("#add-person");
+  var uid = 0;
+
+  function personNodes() { return $all(":scope > .person", personList); }
+
+  /* Die erste Person ist die antwortende Person: Name aus Abschnitt 1
+     automatisch übernehmen, bis sie im Personenfeld selbst geändert wird. */
+  function syncFirstPerson() {
+    var first = personNodes()[0];
+    if (!first) return;
+    [[".p-first", "#main-first"], [".p-last", "#main-last"]].forEach(function (pair) {
+      var field = $(pair[0], first);
+      var source = $(pair[1]);
+      if (!field || !source || field.dataset.touched === "1") return;
+      if (field.value !== source.value) field.value = source.value;
+    });
   }
 
-  // Kein Backend: mailto-Placeholder öffnet das Mailprogramm des Gastes.
-  const subject = encodeURIComponent(`Rückmeldung Hochzeit Lina & Luki – ${d.name} (${d.teilnahme})`);
-  const body = encodeURIComponent(toText(d) + "\n\nRückmeldetermin: " + CONFIG.rsvpDeadline);
-  showThanks(d);
-  window.location.href = `mailto:${CONFIG.email}?subject=${subject}&body=${body}`;
-});
+  function markTouched(node) {
+    [".p-first", ".p-last"].forEach(function (sel) {
+      var input = $(sel, node);
+      if (input) input.addEventListener("input", function () { input.dataset.touched = "1"; });
+    });
+  }
 
-document.getElementById("copy").addEventListener("click", async () => {
-  const t = document.getElementById("summary").textContent;
-  try { await navigator.clipboard.writeText(t); } catch { /* alt: markieren */ }
-});
-document.getElementById("again").addEventListener("click", () => {
-  const form = document.getElementById("rsvp");
-  document.getElementById("thanks").classList.remove("on");
-  form.style.display = "block";
-  form.reset(); bindConditional(); bindAbsage();
-  form.scrollIntoView({behavior:"smooth", block:"nearest"});
-});
+  function renumber() {
+    var list = personNodes();
+    list.forEach(function (node, i) {
+      var num = $(".p-num", node);
+      if (num) num.textContent = i + 1;
+      var rm = $(".p-remove", node);
+      if (rm) rm.style.visibility = list.length > 1 ? "visible" : "hidden";
+      var head = $(".person-name", node);
+      if (head) head.firstChild.nodeValue = i === 0 ? "Du selbst · Person " : "Person ";
+    });
+    if (addBtn) addBtn.disabled = list.length >= MAX_PERSONS;
+    syncFirstPerson();
+  }
 
-bindConditional();
-bindAbsage();
+  function addPerson(focus) {
+    if (!tpl || !personList || personNodes().length >= MAX_PERSONS) return null;
+    var node = tpl.content.firstElementChild.cloneNode(true);
+    uid += 1;
+    /* Radiogruppen pro Person eindeutig benennen */
+    $all("[data-group]", node).forEach(function (input) {
+      input.name = input.dataset.group + "-" + uid;
+    });
+    var rm = $(".p-remove", node);
+    if (rm) rm.addEventListener("click", function () {
+      node.parentNode.removeChild(node);
+      renumber();
+    });
+    markTouched(node);
+    personList.appendChild(node);
+    renumber();
+    if (focus) {
+      var first = $(".p-first", node);
+      if (first) first.focus();
+    }
+    syncMode();
+    return node;
+  }
+
+  if (addBtn) addBtn.addEventListener("click", function () { addPerson(true); });
+  ["#main-first", "#main-last"].forEach(function (sel) {
+    var input = $(sel);
+    if (input) input.addEventListener("input", syncFirstPerson);
+  });
+
+  /* ---------------------------------------------------------
+     RSVP: Zustand (Zusage versteckt nichts, Absage räumt auf)
+     --------------------------------------------------------- */
+  function isAbsage() {
+    var sel = $('input[name="teilnahme"]:checked');
+    return !!sel && sel.value === "Absage";
+  }
+  function syncMode() {
+    var absage = isAbsage();
+    if (form) form.classList.toggle("mode-absage", absage);
+    $all(".only-absage").forEach(function (el) { el.hidden = !absage; });
+  }
+  $all('input[name="teilnahme"]').forEach(function (r) {
+    r.addEventListener("change", syncMode);
+  });
+
+  /* ---------------------------------------------------------
+     Daten sammeln
+     --------------------------------------------------------- */
+  function personData(node, index, attendingPossible) {
+    var first = ($(".p-first", node).value || "").trim();
+    var last = ($(".p-last", node).value || "").trim();
+    var entry = {
+      nummer: index + 1,
+      vorname: first,
+      nachname: last,
+      name: (first + " " + last).trim() || ("Person " + (index + 1))
+    };
+    if (!attendingPossible) { entry.teilnahme = "sagt ab"; return entry; }
+    var attend = $("input.p-attend:checked", node);
+    entry.teilnahme = attend ? attend.value : "nimmt teil";
+    if (entry.teilnahme === "nimmt teil") {
+      var food = $("input.p-food:checked", node);
+      entry.essen = food ? food.value : "keine Angabe";
+      var diets = $all("input.p-diet:checked", node).map(function (c) { return c.value; });
+      entry.ernaehrungsbeduerfnisse = diets.length ? diets.join(", ") : "keine";
+    }
+    return entry;
+  }
+
+  function collect() {
+    var absage = isAbsage();
+    var nodes = personNodes();
+    var personen = nodes.map(function (n, i) { return personData(n, i, !absage); });
+    var zu = personen.filter(function (p) { return p.teilnahme === "nimmt teil"; }).length;
+    var radio = function (name) {
+      var sel = $('input[name="' + name + '"]:checked');
+      return sel ? sel.value : "keine Angabe";
+    };
+    var data = {
+      hochzeit: CONFIG.couple + " – " + CONFIG.weddingDateLabel,
+      rueckmeldung_am: new Date().toLocaleString("de-DE"),
+      antwort: absage ? "Absage" : "Zusage",
+      person: (($("#main-first").value || "").trim() + " " + ($("#main-last").value || "").trim()).trim(),
+      e_mail: ($("#email").value || "").trim(),
+      anzahl_personen: personen.length,
+      anzahl_zusagen: absage ? 0 : zu,
+      gaeste: personen
+    };
+    if (!absage) {
+      data.uebernachtung = radio("uebernachtung");
+      data.anreise = ($("#anreise").value || "").trim() || "keine Angabe";
+    }
+    data.nachricht = ($("#bemerkung").value || "").trim() || "-";
+    return data;
+  }
+
+  function toText(d) {
+    var line = "==========================================================";
+    var out = [];
+    out.push("RÜCKMELDUNG – " + d.hochzeit);
+    out.push(line);
+    out.push("Antwort:           " + d.antwort);
+    out.push("Gemeldet von:      " + (d.person || "-"));
+    out.push("E-Mail:            " + (d.e_mail || "-"));
+    out.push("Eingegangen am:    " + d.rueckmeldung_am);
+    out.push("Personen gesamt:   " + d.anzahl_personen + "  |  Zusagen: " + d.anzahl_zusagen);
+    out.push("");
+    out.push("GÄSTE");
+    d.gaeste.forEach(function (p) {
+      out.push("  " + p.nummer + ". " + p.name + " – " + p.teilnahme);
+      if (p.essen) out.push("       Menü:     " + p.essen);
+      if (p.ernaehrungsbeduerfnisse) out.push("       Bedürfnisse: " + p.ernaehrungsbeduerfnisse);
+    });
+    out.push("");
+    if (d.antwort === "Zusage") {
+      out.push("Übernachtung:      " + d.uebernachtung);
+      out.push("Anreise:           " + d.anreise);
+    }
+    out.push("Noch etwas:        " + d.nachricht);
+    out.push("");
+    out.push("Rückmeldefrist:    " + CONFIG.rsvpDeadline);
+    out.push("Region:            " + CONFIG.region);
+    out.push("Quelle:            Hochzeitswebsite " + CONFIG.couple);
+    return out.join("\r\n");
+  }
+
+  /* ---------------------------------------------------------
+     Validierung
+     --------------------------------------------------------- */
+  var errPanel = $("#err"), errList = $("#err-list");
+
+  function clearErrors() {
+    if (errPanel) errPanel.classList.remove("on");
+    $all(".invalid", form).forEach(function (el) { el.classList.remove("invalid"); });
+  }
+  function flag(target) {
+    var el = target;
+    if (typeof target === "string") el = document.getElementById(target);
+    if (el && el.classList) el.classList.add("invalid");
+  }
+  function showError(messages, focusEl) {
+    if (!errPanel || !errList) return;
+    errList.innerHTML = "";
+    messages.forEach(function (m) {
+      var li = document.createElement("li");
+      li.textContent = m;
+      errList.appendChild(li);
+    });
+    errPanel.classList.add("on");
+    if (focusEl && focusEl.focus) focusEl.focus(); else errPanel.focus();
+  }
+
+  function validate() {
+    clearErrors();
+    var msgs = [];
+    var absage = isAbsage();
+    var focusEl = null;
+    function bad(id, el, msg) { msgs.push(msg); flag(id); if (!focusEl) focusEl = el; }
+
+    var first = $("#main-first"), last = $("#main-last"), email = $("#email");
+
+    if (!(first.value || "").trim()) bad("f-main-first", first, "Bitte deinen Vornamen angeben.");
+    if (!(last.value || "").trim()) bad("f-main-last", last, "Bitte deinen Nachnamen angeben.");
+
+    var mail = (email.value || "").trim();
+    if (!mail) {
+      bad("f-email", email, "Ohne E-Mail-Adresse können wir die Rückmeldung nicht zuordnen – bitte ergänzen.");
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail)) {
+      bad("f-email", email, "Die E-Mail-Adresse sieht unvollständig aus (Beispiel: name@beispiel.de).");
+    }
+
+    if (!$('input[name="teilnahme"]:checked')) {
+      bad("f-teilnahme", $('input[name="teilnahme"]'), "Bitte wähle: „Ich bin dabei“ oder „Leider kann ich nicht teilnehmen“.");
+    }
+
+    var nodes = personNodes();
+    if (!nodes.length) {
+      msgs.push("Bitte mindestens eine Person mit Vor- und Nachnamen eintragen.");
+      if (!focusEl && addBtn) focusEl = addBtn;
+    }
+    var anyAttending = false;
+    nodes.forEach(function (node, i) {
+      var fn = $(".p-first", node), ln = $(".p-last", node);
+      var name = (($(".p-first", node).value || "").trim() + " " + (($(".p-last", node).value || "").trim())).trim();
+      var label = name || ("Person " + (i + 1));
+      if (!(fn.value || "").trim()) bad(fn.closest(".field"), fn, "Bitte den Vornamen von " + label + " ergänzen.");
+      if (!(ln.value || "").trim()) bad(ln.closest(".field"), ln, "Bitte den Nachnamen von " + label + " ergänzen.");
+      if (absage) return;
+      var attend = $("input.p-attend:checked", node);
+      var attending = !attend || attend.value === "nimmt teil";
+      if (attending) {
+        anyAttending = true;
+        if (!$("input.p-food:checked", node)) {
+          bad($("input.p-food", node).closest(".optrow"), $("input.p-food", node),
+              "Bitte die Menüwahl für " + label + " angeben.");
+        }
+      }
+    });
+    if (!absage && nodes.length && !anyAttending) {
+      bad("f-teilnahme", $('input[name="teilnahme"]'),
+        "Alle einzelnen Personen haben abgesagt – bitte oben „Leider kann ich nicht teilnehmen“ wählen.");
+    }
+
+    if (!absage) {
+      if (!$('input[name="uebernachtung"]:checked')) {
+        bad("f-uebernachtung", $('input[name="uebernachtung"]'), "Bitte gib an, ob du über Nacht bleibst.");
+      }
+      if (!$("#anreise").value) {
+        bad("f-anreise-tag", $("#anreise"), "Bitte wähle deinen Anreisetag.");
+      }
+    }
+
+    if (!$("#consent").checked) {
+      bad("f-consent", $("#consent"), "Bitte bestätige, dass wir die Angaben für die Hochzeitsplanung nutzen dürfen.");
+    }
+
+    if ($("#company").value) msgs.push("Bitte das versteckte Feld „Firma“ leer lassen.");
+    return { ok: msgs.length === 0, messages: msgs, focusEl: focusEl };
+  }
+
+  /* ---------------------------------------------------------
+     Ergebnis-Anzeige
+     --------------------------------------------------------- */
+  var result = $("#result"), resultTitle = $("#result-title"), resultText = $("#result-text"),
+      summary = $("#summary"), sendBtn = $("#send");
+  var sending = false, lastText = "";
+
+  function showResult(title, text, options) {
+    var opts = options || {};
+    resultTitle.textContent = title;
+    resultText.innerHTML = text;
+    summary.hidden = !opts.showSummary;
+    if (opts.showSummary) summary.textContent = lastText;
+    $("#copy").hidden = !opts.showSummary;
+    result.classList.add("on");
+    form.hidden = true;
+    result.scrollIntoView({ behavior: "smooth", block: "center" });
+    result.focus();
+  }
+
+  function mailtoHref(d) {
+    var subject = "Rückmeldung Hochzeit " + CONFIG.couple + " – " + (d.person || "") + " (" + d.antwort + ")";
+    return "mailto:" + encodeURIComponent(CONFIG.email) +
+           "?subject=" + encodeURIComponent(subject) +
+           "&body=" + encodeURIComponent(toText(d));
+  }
+
+  /* ---------------------------------------------------------
+     Absenden
+     --------------------------------------------------------- */
+  if (form) form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (sending) return;
+
+    var check = validate();
+    if (!check.ok) {
+      showError(check.messages, check.focusEl);
+      return;
+    }
+
+    var d = collect();
+    lastText = toText(d);
+    sending = true;
+    sendBtn.disabled = true;
+    sendBtn.textContent = "Wird gesendet …";
+
+    function done() {
+      sending = false;
+      sendBtn.disabled = false;
+      sendBtn.textContent = "Rückmeldung absenden";
+    }
+
+    /* 1) Backend konfiguriert → echter Versand */
+    if (CONFIG.endpoint) {
+      window.fetch(CONFIG.endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(d)
+      }).then(function (res) {
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        showResult("Danke, " + (d.person.split(" ")[0] || "") + " – notiert!",
+          "Deine Rückmeldung („" + d.antwort + "“) ist bei uns eingegangen. " +
+          "Wir melden uns bis spätestens " + CONFIG.rsvpDeadline + " mit allen weiteren Details.",
+          { showSummary: true });
+        done();
+      }).catch(function (err) {
+        showResult("Versand fehlgeschlagen",
+          "Deine Rückmeldung konnte nicht übermittelt werden (" + err.message + "). " +
+          "Bitte versuche es erneut oder ruf Celina an: <a href=\"" + CONFIG.contact.phoneHref + "\">" +
+          CONFIG.contact.phoneLabel + "</a>. Unten kannst du die Antwort außerdem kopieren.",
+          { showSummary: true });
+        done();
+      });
+      return;
+    }
+
+    /* 2) Nur Empfängeradresse konfiguriert → Mailprogramm des Gastes */
+    if (CONFIG.email) {
+      window.location.href = mailtoHref(d);
+      showResult("Fast geschafft – E-Mail bitte noch absenden",
+        "Dein Mailprogramm wurde mit der fertigen Nachricht an " + CONFIG.email + " geöffnet. " +
+        "Bitte sende sie ab; nur dann ist die Rückmeldung bei uns. " +
+        "Kopiere sie zur Sicherheit unten.",
+        { showSummary: true });
+      done();
+      return;
+    }
+
+    /* 3) Nichts konfiguriert → nichts verschicken, ehrlich anzeigen */
+    showResult("Rückmeldung vorgemerkt – Versand noch nicht möglich",
+      "Diese Seite ist technisch noch nicht mit einem Postfach verbunden, es wurde also <strong>nichts " +
+      "übermittelt</strong>. Bitte kopiere deine Antwort unten und sende sie an Celina " +
+      "(<a href=\"" + CONFIG.contact.phoneHref + "\">" + CONFIG.contact.phoneLabel + "</a>) " +
+      "oder ruf kurz an. Frist: " + CONFIG.rsvpDeadline + ".",
+      { showSummary: true });
+    done();
+  });
+
+  /* ---------------------------------------------------------
+     Ergebnis: kopieren / neu ausfüllen
+     --------------------------------------------------------- */
+  var copyBtn = $("#copy");
+  if (copyBtn) copyBtn.addEventListener("click", function () {
+    var text = lastText || "";
+    function fallback() {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "readonly");
+      ta.style.position = "fixed";
+      ta.style.top = "-1000px";
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = false;
+      try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      copyBtn.textContent = ok ? "Kopiert ✓" : "Bitte manuell kopieren";
+      window.setTimeout(function () { copyBtn.textContent = "Antwort kopieren"; }, 2500);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        copyBtn.textContent = "Kopiert ✓";
+        window.setTimeout(function () { copyBtn.textContent = "Antwort kopieren"; }, 2500);
+      }).catch(fallback);
+    } else {
+      fallback();
+    }
+  });
+
+  var againBtn = $("#again");
+  if (againBtn) againBtn.addEventListener("click", function () {
+    form.reset();
+    personList.innerHTML = "";
+    uid = 0;
+    addPerson(false);
+    syncMode();
+    clearErrors();
+    result.classList.remove("on");
+    form.hidden = false;
+    lastText = "";
+    $("#main-first").focus();
+    document.getElementById("rsvp").scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
+  /* Fehlerhinweis verschwindet, sobald weitergearbeitet wird */
+  function clearOnInput(e) {
+    if (!errPanel || !errPanel.classList.contains("on")) return;
+    var wrap = e.target && e.target.closest ? e.target.closest(".invalid") : null;
+    if (wrap) wrap.classList.remove("invalid");
+    if (!$all(".invalid", form).length) errPanel.classList.remove("on");
+  }
+  if (form) {
+    form.addEventListener("input", clearOnInput);
+    form.addEventListener("change", clearOnInput);
+  }
+
+  /* ---------------------------------------------------------
+     Start
+     --------------------------------------------------------- */
+  addPerson(false);
+  syncMode();
+  if ($("#config-note") && !CONFIG.endpoint && !CONFIG.email) {
+    $("#config-note").hidden = false;
+  }
+}());
 </script>
 </body>
 </html>

@@ -1,56 +1,105 @@
-# Lina & Luki – Hochzeits-Onepager
+# Celina & Lukas – Hochzeits-Onepager
 
-Eine einzelne HTML-Datei, für Handys gebaut (die Gäste scannen den QR-Code), ohne Backend.
+Eine einzelne HTML-Datei, für Handys gebaut (die Gäste scannen den QR-Code), ohne Build-Tools.
+Design orientiert an der Einladung: dunkles Bordeaux, Creme, Goldakzente, florale Illustration.
 
 ## Dateien
 ```
-lina-luki-wedding/
-  index.html      ← die ganze Seite (CSS und JS inline, keine Build-Tools)
-  qr-code.svg     ← QR-Code auf https://lina-luki-wedding.de für die Einladungskarten
-  img/hero.svg        Platzhalter Paarfoto    (1200×800)
-  img/couple.svg      Platzhalter Lina & Luki (900×1100)
-  img/venue.svg       Platzhalter Location    (1200×800)
-  img/map.svg         Platzhalter Karte       (1200×700)
-  img/gallery-1..3.svg Platzhalter Galerie    (je 900×640)
+lina-luki-wedding-neu/
+  index.html          ← die ganze Seite (CSS und JS inline)
+  qr-code.svg         ← QR-Code für die Einladungskarten (unverändert)
+  img/hero-bloom.svg  ← floraler Hero-Hintergrund (Rosen + Blattwerk, dark bordeaux)
+  img/botanical.svg   ← goldene Linien-Botanik für die Ränder der hellen Abschnitte
+  img/monogram.svg    ← Siegel/Monogramm C & L (Navigation, Ort-Abschnitt, Footer)
+  img/favicon.svg     ← Tab-Symbol
+  img/rose.svg        ← Einzelrose (Motivbaukasten, z. B. für Druckstücke)
+  img/sprig.svg       ← Blattzweig (Motivbaukasten)
+  Beispiel1.jpeg      ← Designreferenz (Einladung) – nur Vorlage, kein Seiten-Asset
+  Moodboard.jpeg      ← Designreferenz (Moodboard) – nur Vorlage, kein Seiten-Asset
 ```
 
-## Anschauen
-Doppelklick auf `index.html` (oder `Start-Process index.html`). Es läuft alles lokal, ohne Server.
-Für den echten Betrieb später: Ordner auf einen beliebigen Hoster legen (Netlify, All-inkl, Hetzner, GitHub Pages), Domain `lina-luki-wedding.de` darauf verbinden.
+Die ehemaligen Foto-Platzhalter (`img/hero.svg`, `couple.svg`, `venue.svg`, `map.svg`,
+`gallery-1..3.svg`) sind entfernt – die Seite zeigt bewusst keine erfundenen Bilder.
+Echte Fotos später: als `img/*.jpg` ablegen und die Stelle im Abschnitt „Unsere Geschichte“
+(bzw. im Hero) ergänzen.
 
-## Platzhalter ersetzen
-1. **Datum & Ort** – im `index.html` unten im Skript bei `const CONFIG`:
-   - `weddingDate` (z. B. `"2027-08-14T15:00:00+02:00"`) → steuert den Countdown
-   - `email` → Empfänger der Rückmeldungen, solange kein Backend läuft
-   - `endpoint` → Backend-URL, sobald der E-Mail-Versand steht
-   - `rsvpDeadline` → Rückmeldetermin
-   Dieselben Werte stehen auch zweimal im sichtbaren Text (Hero und FAQ) – dort steht jeweils
-   `<!-- ▼ PLATZHALTER -->` darüber.
-2. **Bilder** – echte Fotos als `img/hero.jpg`, `img/couple.jpg`, `img/venue.jpg`, `img/map.jpg`,
-   `img/gallery-1.jpg` … legen und in `index.html` den `src` von `.svg` auf `.jpg` ändern.
-   Dateinamen und Maße bleiben gleich, Markup sonst unverändert.
-3. **Texte** – alle Absätze, die mit `PLATZHALTER` beginnen, sind nur Fülltext.
-   Suche im File nach `PLATZHALTER` (44 Stellen) und ersetze sie.
+## Anschauen
+Doppelklick auf `index.html`. Es läuft alles lokal, ohne Server.
+Zum Testen des Formularversands über einen Endpunkt ist ein kleiner Server nötig
+(`python -m http.server`, weil `fetch` per `file://` blockiert wird).
+
+## Verbindliche Angaben (Stand heute)
+| Was | Wert |
+| --- | --- |
+| Namen | Celina & Lukas, Kurzform Lina & Luki |
+| Termin | Samstag, 30. September 2028 |
+| Region | Bayern · Oberfranken · Landkreis Bayreuth |
+| Rückmeldefrist | 30. September 2027 |
+| Kontakt | Celina, +49 162 7909083 (`tel:+491627909083`) |
+| Uhrzeit, Location, Adresse | **noch nicht bestätigt** – im Text überall „folgt“ |
+
+Diese Werte stehen an genau zwei Stellen: sichtbar im HTML und unsichtbar im
+`<script>`-Objekt `CONFIG` (Countdown, E-Mail-Betreff, Nachrichtentext).
+
+## RSVP-Versand – noch zu erledigen
+Das Formular sammelt die Rückmeldung personenbezogen (Name, Zu-/Absage, Menü,
+Ernährungsbedürfnisse je Person) plus Übernachtung, Anreisetag und Freitext.
+Der Versand ist noch **nicht** eingerichtet – bewusst, weil die Empfängeradresse
+nicht feststeht. In `CONFIG` (unten in `index.html`) gibt es zwei Schalter:
+
+1. `endpoint: "/api/rsvp"` – empfohlen. Das Formular sendet dann `POST` als JSON:
+   ```json
+   {
+     "hochzeit": "Celina & Lukas – Samstag, 30. September 2028",
+     "rueckmeldung_am": "24.10.2026, 09:30:29",
+     "antwort": "Zusage", "person": "Max Mustermann", "e_mail": "max@example.org",
+     "anzahl_personen": 2, "anzahl_zusagen": 1,
+     "gaeste": [
+       { "nummer": 1, "vorname": "Max", "nachname": "Mustermann", "name": "Max Mustermann",
+         "teilnahme": "nimmt teil", "essen": "Vegetarisch",
+         "ernaehrungsbeduerfnisse": "glutenfrei" },
+       { "nummer": 2, "vorname": "Anna", "nachname": "Mustermann", "name": "Anna Mustermann",
+         "teilnahme": "sagt ab" }
+     ],
+     "uebernachtung": "Ja", "anreise": "Freitag, 29. September 2028",
+     "nachricht": "Wir kommen mit dem Zug."
+   }
+   ```
+   Der Endpunkt muss `POST` mit `Content-Type: application/json` annehmen und mit
+   `200/201` antworten. Mögliche Dienste: eigenes Skript, Formspark, Formspree,
+   Zapier-Webhook – oder ein kleiner Server am Hoster.
+2. `email: "rsvp@…"` – ohne Backend: Das Mailprogramm des Gastes öffnet sich mit der
+   fertig getexteten Nachricht. Versand gilt erst nach dem Klick auf „Senden“.
+
+Ist beides leer, **werden keine Daten übertragen**: Die Seite sagt das offen und zeigt
+die fertige Antwort zum Kopieren. Der Hinweis erscheint automatisch auch über dem Formular.
+
+Offene Punkte, bevor die Seite live geht:
+- [ ] Empfänger-E-Mail **oder** Backend-Endpunkt in `CONFIG` eintragen
+- [ ] Genaue Location, Adresse und Uhrzeit bestätigen und überall ergänzen
+- [ ] Persönliche Geschichte im Abschnitt „Unsere Geschichte“ schreiben (Platz ist vorbereitet)
+- [ ] Geprüfte Unterkunftsempfehlungen in „Übernachtung“ ergänzen
+- [ ] Eigene Fotos einfügen
+- [ ] `Impressum`/`Datenschutz`: Der Datenschutzhinweis liegt als Text im Formular.
+      Für eine öffentliche Domain zwei kurze Seiten anlegen und die Links im Footer setzen.
+- [ ] Domain klären (`qr-code.svg` zeigt auf `https://lina-luki-wedding.de`)
 
 ## Das Rückmeldeformular
-Felder: Name · E-Mail · Zu-/Absage · Erwachsene & Kinder · Essen (Standard/Vegetarisch/Vegan +
-Allergene als Chips) · Übernachtung ja/nein (+ Unterkunft und Nächte, erscheinen nur bei „Ja“) ·
-Anreise · Shuttle/Mitfahrt · Anmerkungen · Zustimmungs-Checkbox · Button **Absenden**.
-Bei „Absage“ verschwinden die Planungsfelder automatisch.
+Abschnitte: Wer antwortet (Vor-/Nachname, E-Mail = Pflichtfeld) · Zu- oder Absage ·
+Personen (jede einzeln, eigene Zu-/Absage, Menü mit Fleisch/Vegetarisch/Vegan,
+Glutenfrei/Laktosefrei/Keine Nüsse/Keine Meeresfrüchte) · Übernachtung (Ja/Nein) ·
+Anreisetag (Freitag, 29.09.2028 oder Samstag, 30.09.2028) · „Noch etwas?“ (optional) ·
+Zustimmung. Bei einer Absage verschwinden Essen, Übernachtung und Anreise automatisch.
+Die erste Personenkarte übernimmt den Namen aus dem ersten Abschnitt automatisch,
+sobald dort getippt wird – wer sie selbst bearbeitet, behält die eigene Eingabe.
 
-Der Absenden-Button ist bewusst als Platzhalter gebaut:
-- Ohne `CONFIG.endpoint` öffnet sich das Mailprogramm des Gastes mit der fertig zusammengebauten
-  Nachricht an `CONFIG.email` (`mailto:`) – es passiert also schon etwas Sinnvolles.
-- Mit `CONFIG.endpoint` (z. B. `/api/rsvp`, Formspark, Zapier, eigenes Skript) wird per `POST` als
-  JSON gesendet und die Danke-Anzeige gezeigt. Ein Server ist dafür noch nicht geschrieben.
-- Immer wird die Antwort unter der Danke-Anzeige angezeigt und kann kopiert werden – falls der
-  Versand fehlschlägt, geht nichts verloren.
+## Barrierefreiheit & Technik
+Responsiv ab 320 px, Sprunglink zum Inhalt, Feldgruppen mit Legend, sichtbare
+Fokusringe, `aria-live` für Fehler und Ergebnis, `prefers-reduced-motion` wird respektiert,
+Honeypot gegen Spam, keine Frameworks, keine externen Skripte (nur Google Fonts).
 
 ## Druck für die Karten
 `qr-code.svg` ist Vektor – für Karten mit ~20 mm QR-Kante direkt als SVG ins Layout
-(InDesign/Illustrator/Affinity) legen. Schwarze Module auf Weiß, mit Randzone: scanbar bis
-ca. 12 mm. Falls der QR farbig werden soll, bleibt der Kontrast hoch (`#3d5749` auf Weiß).
-
-## Rechtliches
-`Impressum` und `Datenschutz` im Footer sind noch leere Links – für eine echte Domain müssen
-die zwei Seiten ergänzt werden (bei einer privaten Hochzeitsseite reicht ein kurzes Impressum).
+(InDesign/Illustrator/Affinity) legen. Schwarze Module auf Weiß, mit Randzone.
+`img/rose.svg`, `img/sprig.svg` und `img/monogram.svg` passen gestalterisch zur Website,
+falls die gedruckte Karte dieselbe Bildsprache bekommen soll.
